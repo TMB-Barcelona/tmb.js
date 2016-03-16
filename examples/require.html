@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"></script>
+		<script type="text/javascript">
+			require(["../src/tmb"], function(tmb) {
+				var api = tmb("<developer.app_id>", "<developer.app_key>");
+				console.log(api.helloWorld);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
