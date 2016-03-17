@@ -51,3 +51,16 @@ require(["tmb"], function(tmb) {
 ```javascript
 var api = require("tmb")("<app_id>", "<app_key>");
 ```
+
+### Tests
+```bash
+$ npm test
+```
+
+To use Karma first, install Karma CLI
+```bash
+$ sudo npm install -g karma-cli
+$ npm run karma
+```
+
+

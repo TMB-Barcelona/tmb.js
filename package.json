@@ -11,7 +11,8 @@
     "pretest": "npm run setup",
     "test": "./node_modules/.bin/jasmine-node spec",
     "prestart": "npm run setup",
-    "start": "http-server -a localhost -p 8491 -c-1"
+    "start": "http-server -a localhost -p 8491 -c-1",
+    "karma": "karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
