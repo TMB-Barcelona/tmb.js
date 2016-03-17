@@ -9,7 +9,7 @@
   "scripts": {
     "setup": "npm install && node tools/ensure_api_keys.js",
     "pretest": "npm run setup",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/jasmine-node spec",
     "prestart": "npm run setup",
     "start": "http-server -a localhost -p 8491 -c-1"
   },
@@ -26,6 +26,7 @@
   "devDependencies": {
     "file-exists": "^1.0.0",
     "http-server": "^0.9.0",
+    "jasmine-node": "^1.14.5",
     "jsonfile": "^2.2.3",
     "prompt": "^1.0.0"
   },
