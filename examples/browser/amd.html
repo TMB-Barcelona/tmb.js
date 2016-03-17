@@ -2,6 +2,10 @@
 	<head>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"></script>
 		<script type="text/javascript">
+			function show(data) {
+				document.body.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+			}
+
 			require.config({
 				paths: {
 				    "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min"
@@ -10,8 +14,15 @@
 
 			require(["../../src/tmb", "text!../../api_keys.json"], function(tmb, txt) {
 				var keys = JSON.parse(txt);
+
+				// Instantiate with user keys
 				var api = tmb(keys.app_id, keys.app_key);
+
+				// Display a greeting message
 				console.log(api.helloWorld);
+
+				// Search for a term
+				api.search("catalunya").then(show, show);
 			});
 		</script>
 	</head>

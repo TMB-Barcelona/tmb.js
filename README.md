@@ -20,8 +20,8 @@ npm start
 ### Node
 
 ```bash
-npm run setup      # Make sure all requirements are met
-node examples/node/helloWorld.js   # Run a node example
+npm run setup  # Make sure all requirements are met
+node examples/node/search.js   # Run a node example
 ```
 
 ## Loading the library in different environments
@@ -29,6 +29,7 @@ node examples/node/helloWorld.js   # Run a node example
 ### Vanilla browser (global var)
 
 ```html
+<script type="text/javascript" src="axios.js"></script>
 <script type="text/javascript" src="tmb.js"></script>
 <script type="text/javascript">
     var api = tmb("<app_id>", "<app_key>");

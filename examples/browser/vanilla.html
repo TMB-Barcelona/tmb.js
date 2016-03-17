@@ -1,0 +1,26 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../node_modules/axios/dist/axios.js"></script>
+	<script type="text/javascript" src="../../src/tmb.js"></script>
+	<script type="text/javascript">
+        function show(data) {
+            document.body.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        }
+
+		// Get the keys, then use the API :)
+		axios.get('../../api_keys.json').then(function(response) {
+            // Instantiate with user keys
+			var api = tmb(response.data.app_id, response.data.app_key);
+
+            // Display a greeting message
+			console.log(api.helloWorld);
+
+            // Search for a term
+            api.search("catalunya").then(show, show);
+        });
+
+	</script>
+</head>
+<body>
+</body>
+</html>
