@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"></script>
+		<script type="text/javascript">
+			require.config({
+				paths: {
+				    "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min"
+				}
+			});
+
+			require(["../../src/tmb", "text!../../api_keys.json"], function(tmb, txt) {
+				var keys = JSON.parse(txt);
+				var api = tmb(keys.app_id, keys.app_key);
+				console.log(api.helloWorld);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

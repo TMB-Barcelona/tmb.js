@@ -1,26 +1,50 @@
 # tmb.js
 
-TMB javascript library
+TMB API Javascript library
 
 ## Dependencies
 
-None, so far.
+The ones defined in ``package.json``. Run ``npm install``.
 
-## Usage
 
-### Browser globals (vanilla js)
+## Running examples
 
-    <script type="text/javascript" src="tmb.js"></script>
-    <script type="text/javascript">
-        var api = tmb("<developer.app_id>", "<developer.app_key>");
-    </script>
+### Browser
 
-### Browser with requirejs (AMD)
+This will fire an http server:
 
-    require(["tmb"], function(tmb) {
-        var api = tmb("<developer.app_id>", "<developer.app_key>");
-    });
+```bash
+npm start
+```
 
-### Node (CommonJS)
+### Node
 
-    var api = require("tmb")("<developer.app_id>", "<developer.app_key>");
+```bash
+npm run setup      # Make sure all requirements are met
+node examples/node/helloWorld.js   # Run a node example
+```
+
+## Loading the library in different environments
+
+### Vanilla browser (global var)
+
+```html
+<script type="text/javascript" src="tmb.js"></script>
+<script type="text/javascript">
+    var api = tmb("<app_id>", "<app_key>");
+</script>
+```
+
+### Browser with require.js (AMD module)
+
+```javascript
+require(["tmb"], function(tmb) {
+    var api = tmb("<app_id>", "<app_key>");
+});
+```
+
+### Node (CommonJS module)
+
+```javascript
+var api = require("tmb")("<app_id>", "<app_key>");
+```

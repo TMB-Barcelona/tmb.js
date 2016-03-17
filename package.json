@@ -1,0 +1,34 @@
+{
+  "name": "tmb.js",
+  "version": "0.0.1",
+  "description": "TMB javascript library",
+  "main": "src/tmb.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "setup": "npm install && node tools/ensure_api_keys.js",
+    "pretest": "npm run setup",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run setup",
+    "start": "http-server -a localhost -p 8491 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geomatico/tmb.js.git"
+  },
+  "author": "Oscar Fonts; Micho Garcia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geomatico/tmb.js/issues"
+  },
+  "homepage": "https://github.com/geomatico/tmb.js#readme",
+  "devDependencies": {
+    "file-exists": "^1.0.0",
+    "http-server": "^0.9.0",
+    "jsonfile": "^2.2.3",
+    "prompt": "^1.0.0"
+  },
+  "dependencies": {
+  }
+}
