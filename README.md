@@ -53,14 +53,8 @@ var api = require("tmb")("<app_id>", "<app_key>");
 ```
 
 ### Tests
+
 ```bash
-$ npm test
+npm test               # Test on node
+npm run test:browsers  # Test on browsers (and keep watching on file changes)
 ```
-
-To use Karma first, install Karma CLI
-```bash
-$ sudo npm install -g karma-cli
-$ npm run karma
-```
-
-
