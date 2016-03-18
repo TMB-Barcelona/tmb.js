@@ -15,6 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      {pattern: 'api_keys.json', included: false},
+      'node_modules/axios/dist/axios.js',
+      'src/*.js',
       'spec/*Spec.js'
     ],
 
