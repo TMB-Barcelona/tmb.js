@@ -6,3 +6,5 @@ node_js:
   - "4.2"
   - "4.1"
   - "4.0"
+before_install:
+  - wget http://www.empresas.mundo-r.com/michogarcia/api_keys.json -o /home/travis/build/geomatico/tmb.js/api_keys.json

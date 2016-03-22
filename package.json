@@ -9,7 +9,7 @@
   "scripts": {
     "setup": "npm install && node tools/ensure_api_keys.js",
     "pretest": "npm run setup",
-    "test": "./node_modules/.bin/jasmine-node spec",
+    "test": "jasmine-node spec",
     "test:browsers": "npm run setup && karma start karma.conf.js",
     "prestart": "npm run setup",
     "start": "http-server -a localhost -p 8491 -c-1"
