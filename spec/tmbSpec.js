@@ -33,12 +33,12 @@ describe("tmb.js spec:", function() {
         expect(greeting).toContain(keys.app_key);
     });
 
-    // it("should search for a term and return something", function(done) {
-    //     function testResponse(data) {
-    //         expect(data).toBeTruthy();
-    //         done();
-    //     }
-    //
-    //     api.search("catalunya").then(testResponse, done.fail);
-    // })
+    it("should search for a term and return something", function(done) {
+        function testResponse(data) {
+            expect(data).toBeTruthy();
+            done();
+        }
+    
+        api.search("catalunya").then(testResponse, done.fail);
+    })
 });
