@@ -13,7 +13,7 @@
 
     return function(app_id, app_key, version) {
         var http = axios.create({
-            baseURL: "http://tmbapi.tmb.cat/v" + encodeURIComponent((version || 2).toString()) + "/",
+            baseURL: "https://tmbapi.tmb.cat/v" + encodeURIComponent((version || 2).toString()) + "/",
             params: {
                 app_id: app_id,
                 app_key: app_key
