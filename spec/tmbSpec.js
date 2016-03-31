@@ -5,7 +5,7 @@ var IN_NODE = (typeof module === 'object' && module.exports);
 
 if (IN_NODE) {
     // Load module under test.
-    var tmb = require('../src/tmb.js');
+    var tmb = require('../dist/tmb');
 }
 
 describe("tmb.js spec:", function() {
