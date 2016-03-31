@@ -9,8 +9,9 @@
   "scripts": {
     "setup": "npm install && node tools/ensure_api_keys.js",
     "pretest": "npm run setup",
-    "test": "jasmine-node spec",
-    "test:browsers": "npm run setup && karma start karma.conf.js",
+    "test": "npm run test:node && npm run test:browsers",
+    "test:node": "jasmine-node spec",
+    "test:browsers": "karma start karma.conf.js",
     "prestart": "npm run setup",
     "start": "http-server -a localhost -p 8491 -c-1"
   },
@@ -31,12 +32,15 @@
     "jasmine-node": "^1.14.5",
     "jsonfile": "^2.2.3",
     "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.8",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
     "prompt": "^1.0.0"
   },
   "dependencies": {
-    "axios": "^0.9.1"
+    "axios": "^0.9.1",
+    "es6-promise": "^3.1.2"
   }
 }
