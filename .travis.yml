@@ -1,10 +1,6 @@
 language: node_js
 node_js:
-  - "5"
-  - "5.1"
-  - "4"
-  - "4.2"
-  - "4.1"
-  - "4.0"
+- '4'
 before_install:
-  - wget http://www.empresas.mundo-r.com/michogarcia/api_keys.json -O /home/travis/build/geomatico/tmb.js/api_keys.json
+- openssl aes-256-cbc -K $encrypted_0e142905b713_key -iv $encrypted_0e142905b713_iv
+  -in api_keys.json.enc -out api_keys.json -d
