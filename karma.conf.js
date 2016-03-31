@@ -18,7 +18,7 @@ module.exports = function(config) {
       {pattern: 'api_keys.json', included: false},
       'node_modules/es6-promise/dist/es6-promise.js',
       'node_modules/axios/dist/axios.js',
-      'src/*.js',
+      'dist/tmb.js',
       'spec/*Spec.js'
     ],
 
