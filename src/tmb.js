@@ -34,6 +34,7 @@
 
         return {
             helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
+            http: http,
             search: search
         }
     };
