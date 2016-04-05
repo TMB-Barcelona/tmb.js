@@ -2,7 +2,7 @@
 // Generated on Thu Mar 17 2016 17:00:48 GMT+0100 (CET)
 
 module.exports = function(config) {
-  config.set({
+  var configuration = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -16,8 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: 'api_keys.json', included: false},
+      'node_modules/es6-promise/dist/es6-promise.js',
       'node_modules/axios/dist/axios.js',
-      'src/*.js',
+      'dist/tmb.js',
       'spec/*Spec.js'
     ],
 
@@ -59,15 +60,29 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS', 'Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    concurrency: Infinity,
+
+    customLaunchers: {
+      Chrome_travis: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    }
+
+  };
+
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['PhantomJS' /*, 'Chrome_travis'*/];
+  }
+
+  config.set(configuration);
+};

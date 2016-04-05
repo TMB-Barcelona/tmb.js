@@ -2,16 +2,17 @@
   "name": "tmb.js",
   "version": "0.0.1",
   "description": "TMB javascript library",
-  "main": "src/tmb.js",
+  "main": "dist/tmb.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "setup": "npm install && node tools/ensure_api_keys.js",
-    "pretest": "npm run setup",
-    "test": "jasmine-node spec",
-    "test:browsers": "npm run setup && karma start karma.conf.js",
-    "prestart": "npm run setup",
+    "build": "npm install && node tools/ensure_api_keys.js && webpack",
+    "pretest": "npm run build",
+    "test": "npm run test:node && npm run test:browsers",
+    "test:node": "jasmine-node spec",
+    "test:browsers": "karma start karma.conf.js",
+    "prestart": "npm run build",
     "start": "http-server -a localhost -p 8491 -c-1"
   },
   "repository": {
@@ -34,9 +35,13 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.8",
-    "prompt": "^1.0.0"
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "prompt": "^1.0.0",
+    "webpack": "^1.12.14"
   },
   "dependencies": {
-    "axios": "^0.9.1"
+    "axios": "^0.9.1",
+    "es6-promise": "^3.1.2"
   }
 }
