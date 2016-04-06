@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '4'
 before_install:
-- openssl aes-256-cbc -K $encrypted_7424d92f0d0e_key -iv $encrypted_7424d92f0d0e_iv
+- openssl aes-256-cbc -K $encrypted_0e142905b713_key -iv $encrypted_0e142905b713_iv
   -in api_keys.json.enc -out api_keys.json -d
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
