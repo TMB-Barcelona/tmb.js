@@ -23,6 +23,7 @@ var api = function(app_id, app_key, version) {
 
     return {
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
+        http: http,
         search: search
     }
 };
