@@ -9,8 +9,5 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         modulesDirectories: ['node_modules']
-    },
-    externals: [
-        "axios"
-    ]
+    }
 };
