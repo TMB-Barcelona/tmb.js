@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm install && node tools/ensure_api_keys.js && webpack",
     "pretest": "npm run build",
-    "test": "npm run test:node && npm run test:browsers",
+    "test": "npm run test:browsers",
     "test:node": "jasmine-node spec",
     "test:browsers": "karma start karma.conf.js",
     "prestart": "npm run build",
