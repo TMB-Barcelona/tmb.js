@@ -16,10 +16,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: 'api_keys.json', included: false},
+      'node_modules/karma-read-json/karma-read-json.js',
       'node_modules/es6-promise/dist/es6-promise.js',
       'node_modules/axios/dist/axios.js',
       'dist/tmb.js',
-      'spec/*Spec.js'
+      'spec/*Spec.js', 
+      {pattern: 'spec/fixtures/*.json', watched: true, served: true, included: false}
     ],
 
 

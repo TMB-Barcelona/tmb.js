@@ -1,0 +1,88 @@
+{
+  "response": {
+    "numFound": 54,
+    "start": 0,
+    "docs": [
+      {
+        "entitat": "Parades",
+        "icona": "Bus-Parada",
+        "nom": "Pl de Catalunya-Rambla Catalunya",
+        "codi": "1208",
+        "tipus": "Marquesina",
+        "etiqueta": "1208: Pl de Catalunya-Rambla Catalunya"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "22",
+        "nom": "22",
+        "codi": "22",
+        "tipus": "Convencionals",
+        "etiqueta": "22: Pl. Catalunya / Av. Tibidabo"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "41",
+        "nom": "41",
+        "codi": "41",
+        "tipus": "Convencionals",
+        "etiqueta": "41: Pl. Catalunya / Pl. Francesc Macià"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "42",
+        "nom": "42",
+        "codi": "42",
+        "tipus": "Convencionals",
+        "etiqueta": "42: Pl. Catalunya / Santa Coloma"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "47",
+        "nom": "47",
+        "codi": "47",
+        "tipus": "Convencionals",
+        "etiqueta": "47: Pl. Catalunya / Canyelles"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "62",
+        "nom": "62",
+        "codi": "62",
+        "tipus": "Convencionals",
+        "etiqueta": "62: Pl. Catalunya / Ciutat Meridiana"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "66",
+        "nom": "66",
+        "codi": "66",
+        "tipus": "Convencionals",
+        "etiqueta": "66: Pl. Catalunya / Sarrià"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "67",
+        "nom": "67",
+        "codi": "67",
+        "tipus": "Convencionals",
+        "etiqueta": "67: Pl. Catalunya / Cornellà"
+      },
+      {
+        "entitat": "Línies",
+        "icona": "68",
+        "nom": "68",
+        "codi": "68",
+        "tipus": "Convencionals",
+        "etiqueta": "68: Pl. Catalunya / Cornellà"
+      },
+      {
+        "entitat": "Estacions",
+        "icona": "L1",
+        "nom": "Catalunya",
+        "codi": "126",
+        "tipus": "Accessible",
+        "etiqueta": "126: Catalunya"
+      }
+    ]
+  }
+}

@@ -33,12 +33,41 @@ describe("tmb.js spec:", function() {
         expect(greeting).toContain(keys.app_key);
     });
 
-    it("should search for a term and return something", function() {
-        var http = api.http;
-        spyOn(http, "get");
-        api.search('fake');
+    describe("API search call", function() {
+        var result, http;
 
-        expect(http.get).toHaveBeenCalled();
-        expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'fake' } } );
+        beforeEach(function(done) {
+
+            http = api.http;
+            spyOn(http, 'get').and.callFake(function () {
+                return {
+                    then: function (callback) {
+                        var response = readJSON('spec/fixtures/search.catalunya.json');
+                        return callback(response);
+                    }
+                }
+            });
+
+            function handleSuccess(response) {
+                result = response;
+                done()
+            }
+
+            function handleError(error) {
+                result = false;
+                done()
+            }
+
+            api.search('catalunya').then(handleSuccess, handleError);
+        });
+
+        it("should search for a term and return something", function() {
+            expect(http.get).toHaveBeenCalled();
+            expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya' } } );
+            expect(result.response.numFound).toBe(54);
+            expect(result.response.start).toBe(0);
+            expect(result.response.docs.length).toBe(10);
+        })
     })
+
 });
