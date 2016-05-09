@@ -58,7 +58,7 @@ describe("tmb.js spec:", function() {
                 done()
             }
 
-            api.search('catalunya').then(handleSuccess, handleError);
+            api.search.search('catalunya').then(handleSuccess, handleError);
         });
 
         it("as default should search for a term and return 20 records", function() {
@@ -75,8 +75,8 @@ describe("tmb.js spec:", function() {
 
         beforeEach(function(done) {
             
-            var options = {};
-            options.rows = 10;
+            var options = { search: {} };
+            options.search.rows = 10;
 
             api = tmb(keys.app_id, keys.app_key, options);
             
@@ -100,7 +100,7 @@ describe("tmb.js spec:", function() {
                 done()
             }
 
-            api.search('catalunya').then(handleSuccess, handleError);
+            api.search.search('catalunya').then(handleSuccess, handleError);
         });
 
         it("should search for a term and return 10 records passing rows parameter in options", function() {
