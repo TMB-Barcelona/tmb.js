@@ -1,6 +1,6 @@
 {
   "name": "tmb.js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "TMB javascript library",
   "main": "dist/tmb.js",
   "directories": {
