@@ -1,0 +1,23 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../node_modules/es6-promise/dist/es6-promise.js"></script>
+	<script type="text/javascript" src="../../dist/tmb.js"></script>
+	<script type="text/javascript">
+        function show(data) {
+            document.body.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        }
+
+		// Instantiate with user keys
+		var api = tmb('<your_app_id>', '<your_app_key>');
+
+		// Display a greeting message
+		console.log(api.helloWorld);
+
+		// Search for a term
+		api.search("catalunya").then(show, show);
+
+	</script>
+</head>
+<body>
+</body>
+</html>
