@@ -30,9 +30,7 @@ var Search = function(http, options) {
         });
     }
 
-    return {
-        search: search
-    }
+    return search;
 };
 
 module.exports = Search;
