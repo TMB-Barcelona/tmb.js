@@ -31,7 +31,7 @@ var api = function(app_id, app_key, options) {
         return response.data
     });
     
-    var search = Search(http, options);
+    var search = Search(http);
 
     return {
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
