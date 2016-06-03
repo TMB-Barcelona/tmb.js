@@ -9,6 +9,13 @@
 'use strict';
 
 var Search = function(http) {
+    var ENTITATS = {
+        LINIES: 'Línies',
+        INTERCANVIADORS: 'Intercanviadors',
+        PARADES: 'Parades',
+        ESTACIONS: 'Estacions',
+        ACCESSOS: 'Accessos'
+    };
 
     var config = {
         resultsPerPage: 20
@@ -22,16 +29,28 @@ var Search = function(http) {
      * @returns {axios.Promise}
      */
     function query(text, options) {
+        options = options || {};
+
+        var params = {
+            q: text,
+            rows: options.hasOwnProperty('resultsPerPage') ? options.resultsPerPage : config.resultsPerPage
+        };
+
+        if (options.hasOwnProperty('entitats')) {
+            params.entitats = [].concat(options.entitats).join();
+        }
+
+        if (options.hasOwnProperty('detail') && options.detail == true) {
+            params.fl = "*";
+        }
+
         return http.get("search", {
-            params: {
-                q: text,
-                rows: options && options.resultsPerPage ? options.resultsPerPage : config.resultsPerPage
-                /*, fl: "*" */
-            }
+            params: params
         });
     }
 
     return {
+        ENTITATS: ENTITATS,
         config: config,
         query: query
     };
