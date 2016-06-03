@@ -23,7 +23,7 @@ describe("tmb.search.js spec:", function() {
             spyOn(http, 'get').and.callFake(function () {
                 return {
                     then: function (callback) {
-                        var response = readJSON('spec/fixtures/search.catalunya.20.json');
+                        var response = readJSON('spec/fixtures/search.catalunya.json');
                         return callback(response);
                     }
                 }
@@ -31,15 +31,15 @@ describe("tmb.search.js spec:", function() {
 
             function handleSuccess(response) {
                 result = response;
-                done()
+                done();
             }
 
-            function handleError(error) {
+            function handleError() {
                 result = false;
-                done()
+                done();
             }
 
-            api.search.search('catalunya').then(handleSuccess, handleError);
+            api.search.query('catalunya').then(handleSuccess, handleError);
         });
 
         it("as default should search for a term and return 20 records", function() {
@@ -51,46 +51,41 @@ describe("tmb.search.js spec:", function() {
         })
     });
 
-    describe("API search call", function() {
-        var result, http;
+    describe("API search options", function() {
 
-        beforeEach(function(done) {
+        beforeEach(function() {
+            api = tmb(keys.app_id, keys.app_key);
 
-            var options = { search: {} };
-            options.search.rows = 10;
-
-            api = tmb(keys.app_id, keys.app_key, options);
-
-            http = api.http;
-            spyOn(http, 'get').and.callFake(function () {
+            spyOn(api.http, 'get').and.callFake(function(url, options) {
                 return {
                     then: function (callback) {
-                        var response = readJSON('spec/fixtures/search.catalunya.json');
+                        // Return a result page with as many elements as rows specified on query params
+                        var response = { "docs": new Array(options.params.rows) };
                         return callback(response);
                     }
                 }
             });
-
-            function handleSuccess(response) {
-                result = response;
-                done()
-            }
-
-            function handleError(error) {
-                result = false;
-                done()
-            }
-
-            api.search.search('catalunya').then(handleSuccess, handleError);
         });
 
-        it("should search for a term and return 10 records passing rows parameter in options", function() {
-            expect(http.get).toHaveBeenCalled();
-            expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya', rows: 10 } } );
-            expect(result.response.numFound).toBe(54);
-            expect(result.response.start).toBe(0);
-            expect(result.response.docs.length).toBe(10);
-        })
+        it("should let change default resultsPerPage value", function(done) {
+            api.search.config.resultsPerPage = 10;
+            api.search.query('catalunya').then(checkResultCount);
+
+            function checkResultCount(results) {
+                expect(results.docs.length).toBe(10);
+                done();
+            }
+
+        });
+
+        it("should let indicate a specific resultsPerPage value as a query option", function(done) {
+            api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResultCount);
+
+            function checkResultCount(results) {
+                expect(results.docs.length).toBe(15);
+                done();
+            }
+        });
     })
 
 });

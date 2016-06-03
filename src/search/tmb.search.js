@@ -3,15 +3,17 @@
  * 
  * 
  * @param http
- * @param options
  * @returns {{search: search}}
  */
 
-
 'use strict';
 
-var Search = function(http, options) {
-    
+var Search = function(http) {
+
+    var config = {
+        resultsPerPage: 20
+    };
+
     /**
      * Search function. Receives a term to search and returns the promise will be resolved with the response.
      * Use then(handleResponse, handleError) to get the response
@@ -19,20 +21,20 @@ var Search = function(http, options) {
      * @param query term to search
      * @returns {axios.Promise}
      */
-    function search(query) {
-        var rows = 20;
+    function query(text, options) {
         return http.get("search", {
             params: {
-                q: query,
-                rows: (options && options.search && options.search.rows) ? options.search.rows : rows
+                q: text,
+                rows: options && options.resultsPerPage ? options.resultsPerPage : config.resultsPerPage
                 /*, fl: "*" */
             }
         });
     }
 
     return {
-        search: search
-    }
+        config: config,
+        query: query
+    };
 };
 
 module.exports = Search;
