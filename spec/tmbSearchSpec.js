@@ -23,7 +23,7 @@ describe("tmb.search.js spec:", function() {
             spyOn(http, 'get').and.callFake(function () {
                 return {
                     then: function (callback) {
-                        var response = readJSON('spec/fixtures/search.catalunya.20.json');
+                        var response = readJSON('spec/fixtures/search.catalunya.json');
                         return callback(response);
                     }
                 }
