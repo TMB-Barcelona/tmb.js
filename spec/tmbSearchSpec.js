@@ -3,30 +3,23 @@
  */
 
 describe("tmb.search.js spec:", function() {
-    var keys, api;
+    var keys;
 
     beforeEach(function(done) {
         axios.get("base/api_keys.json").then(function(response) {
             keys = response.data;
-            api = tmb(keys.app_id, keys.app_key);
             done();
         })
     });
-
 
     describe("API search call", function() {
         var result, http;
 
         beforeEach(function(done) {
-
+            api = tmb(keys.app_id, keys.app_key);
             http = api.http;
-            spyOn(http, 'get').and.callFake(function () {
-                return {
-                    then: function (callback) {
-                        var response = readJSON('spec/fixtures/search.catalunya.json');
-                        return callback(response);
-                    }
-                }
+            spyOn(http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/search.catalunya.json'));
             });
 
             function handleSuccess(response) {
@@ -51,41 +44,97 @@ describe("tmb.search.js spec:", function() {
         })
     });
 
-    describe("API search options", function() {
+    describe("Set resultsPerPage", function() {
+        var api;
 
         beforeEach(function() {
             api = tmb(keys.app_id, keys.app_key);
 
             spyOn(api.http, 'get').and.callFake(function(url, options) {
-                return {
-                    then: function (callback) {
-                        // Return a result page with as many elements as rows specified on query params
-                        var response = { "docs": new Array(options.params.rows) };
-                        return callback(response);
-                    }
-                }
+                return Promise.resolve({
+                    "docs": new Array(options.params.rows)
+                });
             });
         });
 
         it("should let change default resultsPerPage value", function(done) {
             api.search.config.resultsPerPage = 10;
-            api.search.query('catalunya').then(checkResultCount);
+            api.search.query('catalunya').then(checkResponse);
 
-            function checkResultCount(results) {
-                expect(results.docs.length).toBe(10);
+            function checkResponse(response) {
+                expect(response.docs.length).toBe(10);
                 done();
             }
 
         });
 
         it("should let indicate a specific resultsPerPage value as a query option", function(done) {
-            api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResultCount);
+            api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResponse);
 
-            function checkResultCount(results) {
-                expect(results.docs.length).toBe(15);
+            function checkResponse(response) {
+                expect(response.docs.length).toBe(15);
                 done();
             }
         });
-    })
+
+
+    });
+
+    describe("Other per-query options", function() {
+        var api;
+
+        beforeEach(function() {
+            api = tmb(keys.app_id, keys.app_key);
+
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve();
+            });
+        });
+
+        it("should filter results by a controlled list of ENTITATS", function(done) {
+            var inputs = [
+                [api.search.ENTITATS.ESTACIONS], // Preferred syntax - array of predefined constants
+                api.search.ENTITATS.ESTACIONS, // but for a single element, it is also valid to pass the value directly
+                'Estacions', // Or even the value, but beware of the spelling (case, or accent on 'Línies')!
+                [api.search.ENTITATS.ESTACIONS, api.search.ENTITATS.LINIES], // Preferred syntax again, two elements
+                ['Estacions', 'Línies'], // Less optimal
+                'Estacions,Línies' // This works too, already concatenated string
+            ];
+
+            var outputs = [ // This is what we should get in the end
+                'Estacions',
+                'Estacions',
+                'Estacions',
+                'Estacions,Línies',
+                'Estacions,Línies',
+                'Estacions,Línies'
+            ];
+
+            var queries = inputs.map(function(input) {
+                return api.search.query('catalunya', { entitats: input });
+            });
+
+            Promise.all(queries).then(function(responses) {
+                expect(api.http.get.calls.count()).toEqual(6);
+                for (var i in responses) {
+                    var param = api.http.get.calls.argsFor(i)[1].params.entitats;
+                    expect(param).toEqual(outputs[i]);
+                }
+                done();
+            });
+
+        });
+
+        it("should have an option to enable detailed responses", function(done) {
+            api.search.query('catalunya', { detail: true }).then(check);
+
+            function check() {
+                var params = api.http.get.calls.argsFor(0)[1].params;
+                expect(params.fl).toBeDefined();
+                expect(params.fl).toEqual("*");
+                done();
+            }
+        });
+    });
 
 });
