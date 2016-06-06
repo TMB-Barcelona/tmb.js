@@ -9,7 +9,7 @@ describe("tmb.search.js spec:", function() {
         axios.get("base/api_keys.json").then(function(response) {
             keys = response.data;
             done();
-        })
+        }, fail)
     });
 
     describe("API search call", function() {
@@ -27,12 +27,7 @@ describe("tmb.search.js spec:", function() {
                 done();
             }
 
-            function handleError() {
-                result = false;
-                done();
-            }
-
-            api.search.query('catalunya').then(handleSuccess, handleError);
+            api.search.query('catalunya').then(handleSuccess, fail);
         });
 
         it("as default should search for a term and return 20 records", function() {
@@ -59,7 +54,7 @@ describe("tmb.search.js spec:", function() {
 
         it("should let change default resultsPerPage value", function(done) {
             api.search.config.resultsPerPage = 10;
-            api.search.query('catalunya').then(checkResponse);
+            api.search.query('catalunya').then(checkResponse, fail);
 
             function checkResponse(response) {
                 expect(response.docs.length).toBe(10);
@@ -69,7 +64,7 @@ describe("tmb.search.js spec:", function() {
         });
 
         it("should let indicate a specific resultsPerPage value as a query option", function(done) {
-            api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResponse);
+            api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResponse, fail);
 
             function checkResponse(response) {
                 expect(response.docs.length).toBe(15);
@@ -121,12 +116,12 @@ describe("tmb.search.js spec:", function() {
                     expect(param).toEqual(outputs[i]);
                 }
                 done();
-            });
+            }, fail);
 
         });
 
         it("should have an option to enable detailed responses", function(done) {
-            api.search.query('catalunya', { detail: true }).then(check);
+            api.search.query('catalunya', { detail: true }).then(check, fail);
 
             function check() {
                 var params = api.http.get.calls.argsFor(0)[1].params;
@@ -137,4 +132,24 @@ describe("tmb.search.js spec:", function() {
         });
     });
 
+    /*
+    describe("Get a fucking real response", function() {
+        var api;
+
+        beforeEach(function () {
+            api = tmb(keys.app_id, keys.app_key);
+        });
+
+        it("should return a real response", function (done) {
+            api.search.query('catalunya').then(check, fail);
+
+            function check(response) {
+                console.log(JSON.stringify(response, null, 2));
+                done();
+            }
+
+        });
+
+    });
+    */
 });
