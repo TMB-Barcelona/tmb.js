@@ -2,6 +2,7 @@
 
 var axios = require("axios");
 var Search = require('./search/tmb.search');
+var Transit = require('./transit/tmb.transit');
 
 /**
  * @classdesc
@@ -13,7 +14,7 @@ var Search = require('./search/tmb.search');
  * @param app_id
  * @param app_key
  * @param {object} options:
- *      rows: indicates the number of records will be returned (default 20)
+ *      version {int}: indicates the api version to use. Default: v1
  *
  * @api experimental
  */
@@ -32,11 +33,13 @@ var api = function(app_id, app_key, options) {
     });
     
     var search = Search(http);
+    var transit = Transit(http);
 
     return {
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
         http: http,
-        search: search
+        search: search,
+        transit: transit
     }
 };
 
