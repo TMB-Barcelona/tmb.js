@@ -58,6 +58,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var axios = __webpack_require__(1);
 	var Search = __webpack_require__(19);
+	var Transit = __webpack_require__(20);
 	
 	/**
 	 * @classdesc
@@ -69,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param app_id
 	 * @param app_key
 	 * @param {object} options:
-	 *      rows: indicates the number of records will be returned (default 20)
+	 *      version {int}: indicates the api version to use. Default: v1
 	 *
 	 * @api experimental
 	 */
@@ -88,11 +89,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    
 	    var search = Search(http);
+	    var transit = Transit(http);
 	
 	    return {
 	        helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
 	        http: http,
-	        search: search
+	        search: search,
+	        transit: transit
 	    }
 	};
 	
@@ -1339,7 +1342,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        return http.get("search", {
 	            params: params
-	        });
+	        }).then(parse);
+	    }
+	
+	    function parse(response) {
+	        if(response && response.hasOwnProperty("response") && response.response.hasOwnProperty("docs")) {
+	            response.response.docs = response.response.docs.map(function(item) {
+	                if (item.hasOwnProperty('icona')) {
+	                    item.icona = icon_url(item);
+	                }
+	                return item;
+	            });
+	        }
+	        return response;
+	    }
+	
+	    // TODO change this hack to a set of normalized icons...
+	    function icon_url(item) {
+	        if (item.hasOwnProperty('icona')) {
+	            // Default value is a placeholder
+	            var size = "19";
+	            var bg_color = "0000FF"; // Blue
+	            var fg_color = "FFFFFF"; // White
+	            var text = item.icona;
+	            var url = "http://placehold.it/"+size+"/"+bg_color+"/"+fg_color+"?text="+text;
+	
+	            // Some better known cases
+	            var base = "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/";
+	            if (item.icona == "Bus-Parada") {
+	                url = base + "BUS.png";
+	            } else if (item.icona == "FM") {
+	                url = base + item.icona + ".png";
+	            } else if (item.icona == "Bus-Interc") {
+	                url = base + "INTERC.png";
+	            } else if (item.entitat == "Línies" && item.tipus == "Metro") {
+	                url = base + item.icona + ".png";
+	            } else if (item.entitat == "Línies" && (item.tipus == "Vertical" || item.tipus == "Horitzontal" )) {
+	                url = base + "NXB.png";
+	            }
+	        }
+	        return url;
 	    }
 	
 	    return {
@@ -1350,6 +1392,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = Search;
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	/**
+	 * @classdesc
+	 *
+	 * Module to use TMB API Transit services
+	 */
+	
+	'use strict';
+	
+	var Transit = function(http) {
+	
+	    /**
+	     * Get linies from all transport types (bus, subway and others) from Transit.
+	     *
+	     * @param {int} [codi] - The line code
+	     * @returns {Promise} - A promise to manage response from server
+	     */
+	    function linies(codi) {
+	
+	        var url = "transit/linies/".concat((codi) ? codi.toString() : '');
+	        return http.get(url);
+	    }
+	
+	    return {
+	        linies: linies
+	    };
+	};
+	
+	module.exports = Transit;
 
 
 /***/ }
