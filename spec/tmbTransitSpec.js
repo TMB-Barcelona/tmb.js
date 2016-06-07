@@ -15,29 +15,30 @@ describe("tmb.transit.js spec:", function() {
     describe("Get linies from transit", function() {
         var result, http;
 
-        beforeEach(function(done) {
+        beforeEach(function() {
             api = tmb(keys.app_id, keys.app_key);
             http = api.http;
             spyOn(http, 'get').and.callFake(function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.linies.json'));
             });
 
+        });
+
+        it("as default should get all linies from transit endpoint", function(done) {
+
+            api.transit.linies().then(handleSuccess, handleError);
+
             function handleSuccess(response) {
                 result = response;
+                expect(http.get).toHaveBeenCalledWith('transit/linies/');
+                expect(result.totalFeatures).toBe(257);
                 done();
             }
 
             function handleError() {
-                result = false;
+                expect(false).toBeTruthy();
                 done();
             }
-
-            api.transit.linies().then(handleSuccess, handleError);
-        });
-
-        it("as default should get all linies from transit endpoint", function() {
-            expect(http.get).toHaveBeenCalledWith('transit/linies/');
-            expect(result.totalFeatures).toBe(257);
         })
     });
 });
