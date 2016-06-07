@@ -33,9 +33,9 @@ describe("tmb.search.js spec:", function() {
         it("as default should search for a term and return 20 records", function() {
             expect(http.get).toHaveBeenCalled();
             expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya', rows: 20 } } );
-            expect(result.response.numFound).toBe(54);
-            expect(result.response.start).toBe(0);
-            expect(result.response.docs.length).toBe(20);
+            expect(result.page.total).toBe(54);
+            expect(result.page.from).toBe(1);
+            expect(result.items.length).toBe(20);
         })
     });
 
@@ -47,7 +47,9 @@ describe("tmb.search.js spec:", function() {
 
             spyOn(api.http, 'get').and.callFake(function(url, options) {
                 return Promise.resolve({
-                    "docs": new Array(options.params.rows)
+                    numFound: options.params.rows,
+                    start: 0,
+                    docs: new Array(options.params.rows)
                 });
             });
         });
@@ -57,7 +59,7 @@ describe("tmb.search.js spec:", function() {
             api.search.query('catalunya').then(checkResponse, fail);
 
             function checkResponse(response) {
-                expect(response.docs.length).toBe(10);
+                expect(response.items.length).toBe(10);
                 done();
             }
 
@@ -67,7 +69,7 @@ describe("tmb.search.js spec:", function() {
             api.search.query('catalunya', { resultsPerPage: 15 }).then(checkResponse, fail);
 
             function checkResponse(response) {
-                expect(response.docs.length).toBe(15);
+                expect(response.items.length).toBe(15);
                 done();
             }
         });
@@ -81,8 +83,12 @@ describe("tmb.search.js spec:", function() {
         beforeEach(function() {
             api = tmb(keys.app_id, keys.app_key);
 
-            spyOn(api.http, 'get').and.callFake(function() {
-                return Promise.resolve();
+            spyOn(api.http, 'get').and.callFake(function(url, options) {
+                return Promise.resolve({
+                    numFound: options.params.rows,
+                    start: 0,
+                    docs: new Array(options.params.rows)
+                });
             });
         });
 
