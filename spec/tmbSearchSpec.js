@@ -33,7 +33,7 @@ describe("tmb.search.js spec:", function() {
         it("as default should search for a term and return 20 records", function() {
             expect(http.get).toHaveBeenCalled();
             expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya', rows: 20 } } );
-            expect(result.page.total).toBe(54);
+            expect(result.page.totalRecords).toBe(54);
             expect(result.page.from).toBe(1);
             expect(result.items.length).toBe(20);
         })
