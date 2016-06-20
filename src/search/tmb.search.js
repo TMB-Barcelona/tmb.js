@@ -7,6 +7,7 @@
  */
 
 'use strict';
+var Page = require('./tmb.search.page');
 
 var Search = function(http) {
     var ENTITATS = {
@@ -44,19 +45,31 @@ var Search = function(http) {
             params.fl = "*";
         }
 
+        if (options.hasOwnProperty('page')) {
+            params.start = params.rows * (options.page-1);
+        }
+
         return http.get("search", {
             params: params
-        }).then(parse);
+        }).then(parse).then(function(response) {
+            return Page({
+                text: text,
+                options: options
+            }, response, query);
+        });
     }
 
     function parse(response) {
-        if(response && response.hasOwnProperty("response") && response.response.hasOwnProperty("docs")) {
-            response.response.docs = response.response.docs.map(function(item) {
-                if (item.hasOwnProperty('icona')) {
-                    item.icona = icon_url(item);
-                }
-                return item;
-            });
+        if(response && response.hasOwnProperty("response")) {
+            response = response.response;
+            if (response.hasOwnProperty("docs")) {
+                response.docs = response.docs.map(function (item) {
+                    if (item.hasOwnProperty('icona')) {
+                        item.icona = icon_url(item);
+                    }
+                    return item;
+                });
+            }
         }
         return response;
     }
