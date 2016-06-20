@@ -15,9 +15,7 @@ var Transit = function(http) {
      * @returns {Promise} - A promise to manage response from server
      */
     function linies(codi) {
-
-        var url = "transit/linies/".concat((codi) ? codi.toString() : '');
-        return http.get(url);
+        return http.get("transit/linies/" + (codi || ''));
     }
 
     return {
