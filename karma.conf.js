@@ -1,4 +1,7 @@
 module.exports = function(config) {
+  var webpackConfig = require('./webpack.config.js');
+  webpackConfig.entry = {};
+
   var configuration = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -24,12 +27,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/tmb.js': ['webpack'],
       'spec/*Spec.js': ['webpack']
     },
 
-    webpack: {
-      // The webpack config
-    },
+    webpack: webpackConfig,
 
     webpackMiddleware: {
       noInfo: true
@@ -63,9 +65,7 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity,
-
-    plugins: ["karma-webpack", "karma-jasmine", "karma-spec-reporter", "karma-phantomjs-launcher"]
+    concurrency: Infinity
   };
 
   if (process.env.TRAVIS) {

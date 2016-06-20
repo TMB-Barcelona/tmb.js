@@ -10,7 +10,7 @@
     "postinstall": "node tools/ensure_api_keys.js",
     "test": "karma start karma.conf.js",
     "start": "webpack-dev-server",
-    "publish": "webpack"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
