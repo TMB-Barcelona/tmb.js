@@ -1,42 +1,35 @@
 /**
  * Created by michogarcia on 9/05/16.
  */
-
 describe("tmb.search.js spec:", function() {
-    var keys;
 
-    beforeEach(function(done) {
-        axios.get("base/api_keys.json").then(function(response) {
-            keys = response.data;
-            done();
-        }, fail)
-    });
+    var tmb = require('../src/tmb');
+    var keys = readJSON('api_keys.json');
 
     describe("API search call", function() {
-        var result, http;
+        var api;
 
-        beforeEach(function(done) {
+        beforeEach(function() {
             api = tmb(keys.app_id, keys.app_key);
-            http = api.http;
-            spyOn(http, 'get').and.callFake(function() {
+
+            spyOn(api.http, 'get').and.callFake(function() {
                 return Promise.resolve(readJSON('spec/fixtures/search.catalunya.json'));
             });
+        });
 
-            function handleSuccess(response) {
-                result = response;
+        it("as default should search for a term and return 20 records", function(done) {
+            function handleSuccess(result) {
+                expect(api.http.get).toHaveBeenCalled();
+                expect(api.http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya', rows: 20 } } );
+                expect(result.page.totalRecords).toBe(54);
+                expect(result.page.from).toBe(1);
+                expect(result.items.length).toBe(20);
                 done();
             }
 
             api.search.query('catalunya').then(handleSuccess, fail);
-        });
 
-        it("as default should search for a term and return 20 records", function() {
-            expect(http.get).toHaveBeenCalled();
-            expect(http.get).toHaveBeenCalledWith('search', { params : { q : 'catalunya', rows: 20 } } );
-            expect(result.page.totalRecords).toBe(54);
-            expect(result.page.from).toBe(1);
-            expect(result.items.length).toBe(20);
-        })
+        });
     });
 
     describe("Set resultsPerPage", function() {
@@ -137,25 +130,4 @@ describe("tmb.search.js spec:", function() {
             }
         });
     });
-
-    /*
-    describe("Get a fucking real response", function() {
-        var api;
-
-        beforeEach(function () {
-            api = tmb(keys.app_id, keys.app_key);
-        });
-
-        it("should return a real response", function (done) {
-            api.search.query('catalunya').then(check, fail);
-
-            function check(response) {
-                console.log(JSON.stringify(response, null, 2));
-                done();
-            }
-
-        });
-
-    });
-    */
 });
