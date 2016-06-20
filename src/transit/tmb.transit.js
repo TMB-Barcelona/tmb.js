@@ -9,9 +9,9 @@
 var Transit = function(http) {
 
     /**
-     * Get linies from all transport types (bus, subway and others) from Transit.
+     * Get linies from all transport types (bus, subway and others) from Transit API.
      *
-     * @param {int} [codi] - The line code
+     * @param {Number} [codi] - The line code
      * @returns {Promise} - A promise to manage response from server
      */
     function linies(codi) {
