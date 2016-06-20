@@ -8,20 +8,16 @@
 
 var Transit = function(http) {
 
-    /**
-     * Get linies from all transport types (bus, subway and others) from Transit.
-     *
-     * @param {int} [codi] - The line code
-     * @returns {Promise} - A promise to manage response from server
-     */
-    function linies(codi) {
-
-        var url = "transit/linies/".concat((codi) ? codi.toString() : '');
-        return http.get(url);
-    }
-
     return {
-        linies: linies
+        linies: function(codi) {
+            return http.get("transit/linies/" + (codi || ''));
+        },
+        parades: function(codi) {
+            return http.get("transit/parades/" + (codi || ''));
+        },
+        estacions: function(codi) {
+            return http.get("transit/estacions/" + (codi || ''));
+        }
     };
 };
 
