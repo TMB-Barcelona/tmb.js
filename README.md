@@ -47,7 +47,7 @@ api.search.query("catalunya").then(responseCallback); // Query and return a Prom
 
 * The paged results object:
 
-```
+```javascript
 function responseCallback(result) {
     // 'items' is an array with the n'th page of results (defaults to 20 results per page):
     numResults = result.items.length;
