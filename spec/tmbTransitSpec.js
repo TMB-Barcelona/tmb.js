@@ -3,6 +3,8 @@
  */
 
 describe("tmb.transit.js spec:", function() {
+
+    var tmb = require('../src/tmb');
     var keys = readJSON('api_keys.json');
 
     describe("Get linies", function() {
