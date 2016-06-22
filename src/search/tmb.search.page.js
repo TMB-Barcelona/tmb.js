@@ -11,13 +11,13 @@ var Page = function(request, response, query) {
                  || !response.hasOwnProperty('docs') || !response.docs.hasOwnProperty('length'))
         throw new Error("Not a valid search response");
 
-    var newPage = function(test, number) {
+    var newPage = function(isNewPage, number) {
         return function() {
-            if(test) {
+            if(isNewPage) {
                 var options = Object.create(request.options);
                 options.page = number;
                 return query(request.text, options);
-            } else {
+            } else { // Not a new page: return myself, resolve immediately
                 return Promise.resolve(Page(request, response, query));
             }
         }
