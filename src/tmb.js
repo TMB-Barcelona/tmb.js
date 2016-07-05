@@ -14,7 +14,7 @@ var Transit = require('./transit/tmb.transit');
  * @param app_id
  * @param app_key
  * @param {object} options:
- *      version {int}: indicates the api version to use. Default: v1
+ *      version {Number}: indicates the api version to use. Default: v1
  *
  * @api experimental
  */

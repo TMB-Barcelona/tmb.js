@@ -19,7 +19,7 @@ describe("tmb.transit.js spec:", function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.linies.json'));
             });
 
-            api.transit.linies().then(handleSuccess, fail);
+            api.transit.linies().info().then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/');
@@ -33,7 +33,7 @@ describe("tmb.transit.js spec:", function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.linies.22.json'));
             });
 
-            api.transit.linies(22).then(handleSuccess, fail);
+            api.transit.linies(22).info().then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/22');
@@ -53,29 +53,29 @@ describe("tmb.transit.js spec:", function() {
             api = tmb(keys.app_id, keys.app_key);
         });
 
-        it("should get all parades by default", function(done) {
+        it("should get all parades from a line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.parades.json'));
             });
 
-            api.transit.parades().then(handleSuccess, fail);
+            api.transit.linies(2).parades().then(handleSuccess, fail);
 
             function handleSuccess(response) {
-                expect(api.http.get).toHaveBeenCalledWith('transit/parades/');
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/2/parades/');
                 expect(response.totalFeatures).toBe(2722);
                 done();
             }
         });
 
-        it("should get parades with a particular code", function(done) {
+        it("should get one parada from a bus line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.parades.1244.json'));
             });
 
-            api.transit.parades(1244).then(handleSuccess, fail);
+            api.transit.linies(2).parades(1244).then(handleSuccess, fail);
 
             function handleSuccess(response) {
-                expect(api.http.get).toHaveBeenCalledWith('transit/parades/1244');
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/2/parades/1244');
                 expect(response.totalFeatures).toBe(1);
                 response.features.forEach(function(feature) {
                     expect(feature.properties.CODI_PARADA).toBe(1244);
@@ -97,10 +97,10 @@ describe("tmb.transit.js spec:", function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.estacions.json'));
             });
 
-            api.transit.estacions().then(handleSuccess, fail);
+            api.transit.linies(2).estacions().then(handleSuccess, fail);
 
             function handleSuccess(response) {
-                expect(api.http.get).toHaveBeenCalledWith('transit/estacions/');
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/');
                 expect(response.totalFeatures).toBe(130);
                 done();
             }
@@ -111,10 +111,10 @@ describe("tmb.transit.js spec:", function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.estacions.6660126.json'));
             });
 
-            api.transit.estacions(6660126).then(handleSuccess, fail);
+            api.transit.linies(2).estacions(6660126).then(handleSuccess, fail);
 
             function handleSuccess(response) {
-                expect(api.http.get).toHaveBeenCalledWith('transit/estacions/6660126');
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/6660126');
                 expect(response.totalFeatures).toBe(1);
                 response.features.forEach(function(feature) {
                     expect(feature.properties.CODI_GRUP_ESTACIO).toBe(6660126);
