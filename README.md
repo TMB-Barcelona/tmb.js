@@ -103,22 +103,22 @@ Again, queries to the API return a Promise:
 
 ```javascript
 // Get all linies
-api.transit.linies().then(parseLinies);
+api.transit.linies().info().then(parseLinies);
 
 // Get linies with a specific CODI_LINIA 
-api.transit.linies(22).then(parseLinies);
+api.transit.linies(22).info().then(parseLinies);
 
 // Get all parades
-api.transit.parades().then(parseParades);
+api.transit.linies(22).parades().then(parseParades);
 
 // Get parades with a specific CODI_PARADA
-api.transit.parades(1244).then(parseParades);
+api.transit.linies(22).parades(2608).then(parseParades);
 
 // Get all estacions
-api.transit.estacions().then(parseEstacions);
+api.transit.linies(2).estacions().then(parseEstacions);
 
 // Get estacions with a specific CODI_GRUP_ESTACIO
-api.transit.estacions(6660126).then(parseEstacions);
+api.transit.linies(2).estacions(213).then(parseEstacions);
 ```
 
 Responses are GeoJSON FeatureCollections, which look like this:
@@ -175,7 +175,7 @@ A callback example:
 ```javascript
 function parseParades(featureCollection) {
     featureCollecion.features.forEach(function(feature){
-        console.log(feature.properties.CODI_PARADA); // would be CODI_LINIA if parsing linies, or CODI_GRUP_ESTACIO if parsing estacions
+        console.log(feature.properties.CODI_PARADA); // would be CODI_LINIA if parsing linies, or CODI_ESTACIO_LINIA if parsing estacions
     });
 }
 ```
