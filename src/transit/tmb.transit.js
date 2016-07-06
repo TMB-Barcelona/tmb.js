@@ -7,31 +7,69 @@
 'use strict';
 
 var Transit = function(http) {
-    var estacions = function(linia, estacio) {
-        return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || ''));
-    };
 
-    var parades = function(linia, parada) {
-        return http.get("transit/linies/bus/" + linia + '/parades/' + (parada || ''));
-    };
+    var linies = function(linia) {
 
-    var linies = function(codi) {
+        var info = function() {
+            return http.get("transit/linies/" + (linia || ''));
+        };
+
         return  {
-            info: function() {
-                return http.get("transit/linies/" + (codi || ''));
-            },
-            parades: function(parada) {
-                if(!codi) {
-                    throw 'Something wrong happens, codi it is necessary!!';
+            info: info
+        }
+    };
+
+    linies.metro = function(linia) {
+         var info = function() {
+            return http.get("transit/linies/metro/" + (linia || ''));
+         };
+
+         var estacions = function(estacio) {
+            return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || ''));
+         };
+
+         return {
+             info: info,
+             estacions: estacions
+         }
+
+    };
+
+    linies.bus = function(linia) {
+        var info = function() {
+            return http.get("transit/linies/bus/" + (linia || ''));
+        };
+
+        var parades = function(parada) {
+            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || ''));
+            Object.defineProperties(parades, {
+                anada: {
+                    get: function() {
+                        return this.then(filtraParades.bind(this, "A"));
+                    }
+                },
+                tornada: {
+                    get: function() {
+                        return this.then(filtraParades.bind(this, "T"));
+                    }
                 }
-                return parades(codi, parada);
-            },
-            estacions: function(estacio) {
-                if(!codi) {
-                    throw 'Something wrong happens, codi it is necessary!!';
-                }
-                return estacions(codi, estacio);
-            }
+            });
+            return parades;
+        };
+
+        var filtraParades = function(sentit, parades) {
+            parades.features = parades.features.filter(function(feature) {
+                return feature.properties.SENTIT == sentit;
+            }).sort(function(f1, f2) {
+                return f1.properties.ORDRE - f2.properties.ORDRE;
+            });
+            parades.totalFeatures = parades.features.length;
+            return parades;
+        };
+
+        return {
+            info: info,
+            parades: parades
         }
     };
 

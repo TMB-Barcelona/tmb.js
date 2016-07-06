@@ -46,7 +46,7 @@ describe("tmb.transit.js spec:", function() {
         });
     });
 
-    describe("Get parades", function() {
+    describe("Get Bus Parades", function() {
         var api;
 
         beforeEach(function() {
@@ -55,10 +55,10 @@ describe("tmb.transit.js spec:", function() {
 
         it("should get all parades from a line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
-                return Promise.resolve(readJSON('spec/fixtures/transit.linies.22.parades.json'));
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.bus.22.parades.json'));
             });
 
-            api.transit.linies(22).parades().then(handleSuccess, fail);
+            api.transit.linies.bus(22).parades().then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/22/parades/');
@@ -67,12 +67,52 @@ describe("tmb.transit.js spec:", function() {
             }
         });
 
-        it("should get one parada from a bus line", function(done) {
+        it("should get an ordered list of parades for both directions", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
-                return Promise.resolve(readJSON('spec/fixtures/transit.linies.22.parades.2608.json'));
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.bus.22.parades.json'));
             });
 
-            api.transit.linies(22).parades(2608).then(handleSuccess, fail);
+            var actions = [
+                api.transit.linies.bus(22).parades().anada,
+                api.transit.linies.bus(22).parades().tornada
+            ];
+
+            Promise.all(actions).then(handleSuccess, fail);
+
+            function handleSuccess(parades) {
+                var paradesAnada = parades[0];
+                var paradesTornada = parades[1];
+
+                expect(paradesAnada.totalFeatures).toBe(paradesAnada.features.length);
+                expect(paradesTornada.totalFeatures).toBe(paradesTornada.features.length);
+                expect(paradesAnada.totalFeatures + paradesTornada.totalFeatures).toBe(33);
+
+                var ordre = Number.NEGATIVE_INFINITY;
+                paradesAnada.features.forEach(function(parada) {
+                    expect(parada.properties.SENTIT).toEqual("A");
+                    expect(parada.properties.ORDRE).toBeGreaterThan(ordre);
+                    ordre = parada.properties.ORDRE;
+                });
+
+                ordre = Number.NEGATIVE_INFINITY;
+                paradesTornada.features.forEach(function(parada) {
+                    expect(parada.properties.SENTIT).toEqual("T");
+                    expect(parada.properties.ORDRE).toBeGreaterThan(ordre);
+                    ordre = parada.properties.ORDRE;
+                });
+
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/22/parades/');
+                done();
+            }
+
+        });
+
+        it("should get one parada from a bus line", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.bus.22.parades.2608.json'));
+            });
+
+            api.transit.linies.bus(22).parades(2608).then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/22/parades/2608');
@@ -85,7 +125,7 @@ describe("tmb.transit.js spec:", function() {
         });
     });
 
-    describe("Get estacions", function() {
+    describe("Get Metro Estacions", function() {
         var api;
 
         beforeEach(function() {
@@ -94,10 +134,10 @@ describe("tmb.transit.js spec:", function() {
 
         it("should get all estacions from a line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
-                return Promise.resolve(readJSON('spec/fixtures/transit.linies.2.estacions.json'));
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.metro.2.estacions.json'));
             });
 
-            api.transit.linies(2).estacions().then(handleSuccess, fail);
+            api.transit.linies.metro(2).estacions().then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/');
@@ -108,10 +148,10 @@ describe("tmb.transit.js spec:", function() {
 
         it("should get one estacio from a metro line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
-                return Promise.resolve(readJSON('spec/fixtures/transit.linies.2.estacions.213.json'));
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.metro.2.estacions.213.json'));
             });
 
-            api.transit.linies(2).estacions(213).then(handleSuccess, fail);
+            api.transit.linies.metro(2).estacions(213).then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/213');

@@ -105,23 +105,48 @@ api.search.config.resultsPerPage = 50;
 Again, queries to the API return a Promise:
 
 ```javascript
-// Get all linies
+
+/* MIXED BUS AND METRO */
+
+// Get all lines (mixed bus and metro)
 api.transit.linies().info().then(parseLinies);
 
-// Get linies with a specific CODI_LINIA 
+// Get all lines with a specific ID (mixed bus and metro)
 api.transit.linies(22).info().then(parseLinies);
 
-// Get all parades
-api.transit.linies(22).parades().then(parseParades);
 
-// Get parades with a specific CODI_PARADA
-api.transit.linies(22).parades(2608).then(parseParades);
+/* BUS */
 
-// Get all estacions
-api.transit.linies(2).estacions().then(parseEstacions);
+// Get all bus lines
+api.transit.linies.bus().info().then(parseLinies);
 
-// Get estacions with a specific CODI_GRUP_ESTACIO
-api.transit.linies(2).estacions(213).then(parseEstacions);
+// Get a bus line with a specific ID
+api.transit.linies.bus(22).info().then(parseLinies);
+
+// Get all stops from a bus line (both ways, unsorted)
+api.transit.linies.bus(22).parades().then(parseParades);
+
+// Get all stops from a bus line (single way, ordered)
+api.transit.linies.bus(22).parades().anada.then(parseParades);
+api.transit.linies.bus(22).parades().tornada.then(parseParades);
+
+// Get a specific stop from a bus line (doubled for stops on line ends)
+api.transit.linies.bus(22).parades(2608).then(parseParades);
+
+
+/* METRO */
+
+// Get all metro lines
+api.transit.linies.metro().info().then(parseLinies);
+
+// Get a metro line with a specific ID
+api.transit.linies.metro(2).info().then(parseLinies);
+
+// Get all stations from a metro line
+api.transit.linies.metro(2).estacions().then(parseEstacions);
+
+// Get a specific station from a metro line
+api.transit.linies.metro(2).estacions(213).then(parseEstacions);
 ```
 
 Responses are GeoJSON FeatureCollections, which look like this:
