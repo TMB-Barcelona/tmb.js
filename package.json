@@ -7,10 +7,10 @@
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "node tools/ensure_api_keys.js",
-    "test": "karma start karma.conf.js",
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "postinstall": "webpack",
+    "keys": "node tools/ensure_api_keys.js",
+    "test": "npm run keys && karma start karma.conf.js",
+    "start": "npm run keys && webpack-dev-server"
   },
   "repository": {
     "type": "git",
