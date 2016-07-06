@@ -1,0 +1,130 @@
+{
+   "type":"FeatureCollection",
+   "totalFeatures":2,
+   "features":[
+      {
+         "type":"Feature",
+         "id":"PAR_REC.fid--3f7837d5_155ba9a4906_398f",
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               2.1367510573327704,
+               41.40976855289294
+            ]
+         },
+         "geometry_name":"GEOMETRY",
+         "properties":{
+            "ID_ITI_REC":39092385,
+            "ID_RECORREGUT":1343552,
+            "ID_PARADA":689279,
+            "CODI_PARADA":2608,
+            "NOM_PARADA":"Pl John F Kennedy-Av Tibidabo",
+            "DESC_PARADA":"Pl. John F. Kennedy",
+            "CODI_INTERC":null,
+            "NOM_INTERC":null,
+            "TIPUS_ELEMENT":"PARADA",
+            "ADRECA":"Balmes 445",
+            "ID_POBLACIO":748,
+            "NOM_POBLACIO":"Barcelona",
+            "ID_DISTRICTE":625,
+            "NOM_DISTRICTE":"Sarrià-St. Gervasi",
+            "NOM_VIA":"Plaça de John F. Kennedy",
+            "ORDRE":1,
+            "DISTANCIA_PAR_ANTERIOR":0,
+            "ES_ORIGEN":1,
+            "ES_DESTI":0,
+            "ES_MAXINODE":1,
+            "ID_LINIA":7,
+            "CODI_LINIA":22,
+            "NOM_LINIA":"22",
+            "DESC_LINIA":"Pl. Catalunya / Av. Tibidabo",
+            "ORIGEN_SENTIT":"Av. Tibidabo",
+            "DESTI_SENTIT":"Pl. Catalunya",
+            "ORDRE_LINIA":22,
+            "ID_OPERADOR":2,
+            "NOM_OPERADOR":"TB",
+            "CODI_FAMILIA":1,
+            "NOM_FAMILIA":"Convencionals",
+            "ORDRE_FAMILIA":13,
+            "ID_TIPUS_DIA":1,
+            "ID_TIPUS_DIA_EMULAT":0,
+            "ID_SENTIT":2,
+            "SENTIT":"T",
+            "DESC_SENTIT":"Tornada",
+            "ID_TIPUS_RECORREGUT":2,
+            "ID_TIPUS_SERVEI":1,
+            "DESC_SERVEI":"Sentit Comercial",
+            "ID_TIPUS_SUB_SERVEI":102,
+            "DESC_SUB_SERVEI":"Sentit Comercial Tornada",
+            "DATA_INICI":"2016-02-28Z",
+            "DATA_FI":null,
+            "COLOR_REC":"ED8E8C"
+         }
+      },
+      {
+         "type":"Feature",
+         "id":"PAR_REC.fid--3f7837d5_155ba9a4906_3990",
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               2.1367510573327704,
+               41.40976855289294
+            ]
+         },
+         "geometry_name":"GEOMETRY",
+         "properties":{
+            "ID_ITI_REC":40446889,
+            "ID_RECORREGUT":1392648,
+            "ID_PARADA":689279,
+            "CODI_PARADA":2608,
+            "NOM_PARADA":"Pl John F Kennedy-Av Tibidabo",
+            "DESC_PARADA":"Pl. John F. Kennedy",
+            "CODI_INTERC":null,
+            "NOM_INTERC":null,
+            "TIPUS_ELEMENT":"PARADA",
+            "ADRECA":"Balmes 445",
+            "ID_POBLACIO":748,
+            "NOM_POBLACIO":"Barcelona",
+            "ID_DISTRICTE":625,
+            "NOM_DISTRICTE":"Sarrià-St. Gervasi",
+            "NOM_VIA":"Plaça de John F. Kennedy",
+            "ORDRE":16,
+            "DISTANCIA_PAR_ANTERIOR":328.88652,
+            "ES_ORIGEN":0,
+            "ES_DESTI":1,
+            "ES_MAXINODE":1,
+            "ID_LINIA":7,
+            "CODI_LINIA":22,
+            "NOM_LINIA":"22",
+            "DESC_LINIA":"Pl. Catalunya / Av. Tibidabo",
+            "ORIGEN_SENTIT":"Pl. Catalunya",
+            "DESTI_SENTIT":"Av. Tibidabo",
+            "ORDRE_LINIA":22,
+            "ID_OPERADOR":2,
+            "NOM_OPERADOR":"TB",
+            "CODI_FAMILIA":1,
+            "NOM_FAMILIA":"Convencionals",
+            "ORDRE_FAMILIA":13,
+            "ID_TIPUS_DIA":1,
+            "ID_TIPUS_DIA_EMULAT":0,
+            "ID_SENTIT":1,
+            "SENTIT":"A",
+            "DESC_SENTIT":"Anada",
+            "ID_TIPUS_RECORREGUT":2,
+            "ID_TIPUS_SERVEI":1,
+            "DESC_SERVEI":"Sentit Comercial",
+            "ID_TIPUS_SUB_SERVEI":101,
+            "DESC_SUB_SERVEI":"Sentit Comercial Anada",
+            "DATA_INICI":"2016-02-28Z",
+            "DATA_FI":null,
+            "COLOR_REC":"DC241F"
+         }
+      }
+   ],
+   "crs":{
+      "type":"name",
+      "properties":{
+         "name":"urn:ogc:def:crs:EPSG::4326"
+      }
+   }
+}
