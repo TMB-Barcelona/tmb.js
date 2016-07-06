@@ -33,13 +33,13 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "jsonfile": "^2.2.3",
+    "prompt": "^1.0.0"
   },
   "dependencies": {
     "axios": "^0.9.1",
     "es6-promise": "^3.1.2",
-    "jsonfile": "^2.2.3",
-    "prompt": "^1.0.0"
+    "webpack": "^1.12.14"
   }
 }
