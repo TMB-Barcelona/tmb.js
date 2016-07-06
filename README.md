@@ -28,6 +28,9 @@ Then, include the built ``dist/tmb.js`` library, and instantiate with your API k
 		// Instantiate with user keys
 		var api = tmb('<your_app_id>', '<your_app_key>');
 
+		// Alternatively, indicate a JSON file location (URL) containing: {"app_id":"<your_app_id>","app_key":"<your_app_key>"}
+		var api_2 = tmb("path/to/api_keys.json");
+
 		// Display a greeting message
 		console.log(api.helloWorld);
 	</script>

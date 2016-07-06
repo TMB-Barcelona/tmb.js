@@ -18,14 +18,41 @@ var Transit = require('./transit/tmb.transit');
  *
  * @api experimental
  */
-var api = function(app_id, app_key, options) {
+var api = function(app_id_or_url, app_key) {
+
+    var readJSON = function(url) {
+        var xhr = new XMLHttpRequest();
+        var json = null;
+
+        xhr.open("GET", url, false);
+
+        xhr.onload = function(e) {
+            if (xhr.status === 200) {
+                json = JSON.parse(xhr.responseText);
+            } else {
+                console.error('readJSON', url, xhr.statusText);
+            }
+        };
+
+        xhr.onerror = function (e) {
+            console.error('readJSON', url, xhr.statusText);
+        };
+
+        xhr.send(null);
+        return json;
+    };
+
+    var keys = {};
+    if (app_key) {
+        keys.app_id = app_id_or_url;
+        keys.app_key = app_key;
+    } else {
+        keys = readJSON(app_id_or_url);
+    }
 
     var http = axios.create({
-        baseURL: "https://api.tmb.cat/v" + encodeURIComponent((options && options.version || 1).toString()) + "/",
-        params: {
-            app_id: app_id,
-            app_key: app_key
-        }
+        baseURL: "https://api.tmb.cat/v1/",
+        params: keys
     });
     
     http.interceptors.response.use(function(response) {

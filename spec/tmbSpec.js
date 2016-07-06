@@ -13,6 +13,14 @@ describe("tmb.js spec:", function() {
         expect(greeting).toContain(keys.app_key);
     });
 
+    it("should read keys from a json file", function(){
+        var api2 = tmb('/base/api_keys.json');
+        var greeting = api2.helloWorld;
+        expect(greeting).toBeTruthy();
+        expect(greeting).toContain(keys.app_id);
+        expect(greeting).toContain(keys.app_key);
+    });
+
     it("should make real HTTP calls and get something in response", function(done) {
         api.search.query("catalunya").then(function(response) {
             expect(response.page.totalRecords).toBeGreaterThan(0);
