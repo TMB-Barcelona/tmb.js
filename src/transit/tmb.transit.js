@@ -20,18 +20,26 @@ var Transit = function(http) {
     };
 
     linies.metro = function(linia) {
-         var info = function() {
+        var info = function() {
             return http.get("transit/linies/metro/" + (linia || ''));
-         };
+        };
 
-         var estacions = function(estacio) {
-            return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || ''));
-         };
+        var estacions = function(estacio) {
+            function icones(estacions) {
+                estacions.features.forEach(function(estacio) {
+                    var base = "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/";
+                    var p = estacio.properties;
+                    p.icona = base + p.PICTO + ".png";
+                });
+                return estacions;
+            }
+            return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(icones);
+        };
 
-         return {
-             info: info,
-             estacions: estacions
-         }
+        return {
+            info: info,
+            estacions: estacions
+        }
 
     };
 
@@ -41,7 +49,19 @@ var Transit = function(http) {
         };
 
         var parades = function(parada) {
-            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || ''));
+            function icones(parades) {
+                parades.features.forEach(function(parada) {
+                    var p = parada.properties;
+                    var size = "19";
+                    var bg_color = p.COLOR_REC;
+                    var fg_color = "FFFFFF"; // White
+                    var text = p.NOM_LINIA;
+                    p.icona = "http://placehold.it/" + size + "/" + bg_color + "/" + fg_color + "?text=" + text;
+                });
+                return parades;
+            }
+
+            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icones);
             Object.defineProperties(parades, {
                 anada: {
                     get: function() {
