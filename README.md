@@ -133,6 +133,9 @@ api.transit.linies.bus(22).parades().tornada.then(parseParades);
 // Get a specific stop from a bus line (doubled for stops on line ends)
 api.transit.linies.bus(22).parades(2608).then(parseParades);
 
+// Get all correspondencies for a bus stop
+api.transit.linies.bus(22).parades(2608).corresp.then(parseParades);
+
 
 /* METRO */
 
@@ -147,6 +150,16 @@ api.transit.linies.metro(2).estacions().then(parseEstacions);
 
 // Get a specific station from a metro line
 api.transit.linies.metro(2).estacions(213).then(parseEstacions);
+
+// Get all correspondencies for a metro station
+api.transit.linies.metro(2).estacions(213).corresp.then(parseCorresp);
+
+// Get all accessos for a metro station
+api.transit.linies.metro(2).estacions(213).accessos().then(parseAccessos);
+
+// Get a particular acces for a metro station
+api.transit.linies.metro(2).estacions(213).accessos(21301).then(parseAccessos);
+
 ```
 
 Responses are GeoJSON FeatureCollections, which look like this:

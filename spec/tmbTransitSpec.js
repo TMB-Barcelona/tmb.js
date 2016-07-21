@@ -164,4 +164,71 @@ describe("tmb.transit.js spec:", function() {
         });
     });
 
+     describe("Get Correspondencies i Accessos", function() {
+        var api;
+
+        beforeEach(function() {
+            api = tmb(keys.app_id, keys.app_key);
+        });
+
+        it("should get all correspondencies for a Bus Stop", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.bus.22.parades.2878.corresp.json'));
+            });
+
+            console.log(api.transit.linies.bus(22).parades(2878));
+
+            api.transit.linies.bus(22).parades(2878).corresp.then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/22/parades/2878/corresp');
+                expect(response.totalFeatures).toBe(8);
+                done();
+            }
+        });
+
+        it("should get all correspondencies for a Metro Station", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.metro.2.estacions.213.corresp.json'));
+            });
+
+            api.transit.linies.metro(2).estacions(213).corresp.then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/213/corresp');
+                expect(response.totalFeatures).toBe(29);
+                done();
+            }
+        });
+
+        it("should get all accessos for a Metro Station", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.metro.2.estacions.213.accessos.json'));
+            });
+
+            api.transit.linies.metro(2).estacions(213).accessos().then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/213/accessos/');
+                expect(response.totalFeatures).toBe(2);
+                done();
+            }
+        });
+
+         it("should get a particular acces for a Metro Station", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.linies.metro.2.estacions.213.accessos.21301.json'));
+            });
+
+            api.transit.linies.metro(2).estacions(213).accessos(21301).then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/linies/metro/2/estacions/213/accessos/21301');
+                expect(response.totalFeatures).toBe(1);
+                done();
+            }
+        });
+
+    });
+
 });

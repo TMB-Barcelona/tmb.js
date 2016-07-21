@@ -1,0 +1,56 @@
+{
+ "type": "FeatureCollection",
+ "totalFeatures": 1,
+ "features": [
+  {
+   "type": "Feature",
+   "id": "ACCESSOS_EST_LINIA.fid--54d7064a_1560ca30de9_-42ec",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.167613968626813,
+     41.3889235878422
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_ACCES_ESTACIO_LINIA": 308000190,
+    "ID_ACCES_ESTACIO": 308,
+    "CODI_ACCES_ESTACIO": 21301,
+    "ID_ACCES": 308,
+    "CODI_ACCES": 21301,
+    "NOM_ACCES": "Rbla. Catalunya",
+    "NUM_ASCENSORS": 1,
+    "ID_GRUP_ESTACIO": 213,
+    "CODI_GRUP_ESTACIO": 6660213,
+    "ID_ESTACIO_LINIA": 190,
+    "CODI_ESTACIO_LINIA": 213,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "NOM_ESTACIO": "Passeig de Gràcia",
+    "ORDRE_ESTACIO": 4,
+    "ID_LINIA": 6,
+    "CODI_LINIA": 2,
+    "NOM_LINIA": "L2",
+    "ORDRE_LINIA": 2,
+    "ID_SERVEI": 200,
+    "CODI_SERVEI": 200,
+    "ID_TIPUS_SERVEI": 1,
+    "NOM_TIPUS_SERVEI": "Normal",
+    "ID_TIPUS_ACCESSIBILITAT": 1,
+    "NOM_TIPUS_ACCESSIBILITAT": "Accessible",
+    "ID_TIPUS_ESTAT": 1,
+    "NOM_TIPUS_ESTAT": "Operatiu",
+    "DATA_INAUGURACIO": null,
+    "DATA_INICI": "2013-04-12Z",
+    "DATA_FI": null
+   }
+  }
+ ],
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::4326"
+  }
+ }
+}

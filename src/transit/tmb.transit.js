@@ -25,6 +25,7 @@ var Transit = function(http) {
         };
 
         var estacions = function(estacio) {
+
             function icones(estacions) {
                 estacions.features.forEach(function(estacio) {
                     var base = "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/";
@@ -33,7 +34,22 @@ var Transit = function(http) {
                 });
                 return estacions;
             }
-            return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(icones);
+
+            var estacions = http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(icones);
+
+            Object.defineProperties(estacions, {
+                corresp: {
+                    get: function() {
+                        return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '') + '/corresp');
+                    }
+                }
+            });
+
+            estacions.accessos = function(acces) {
+                return http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '') + '/accessos/' + (acces || ''));
+            };
+
+            return estacions;
         };
 
         return {
@@ -49,6 +65,7 @@ var Transit = function(http) {
         };
 
         var parades = function(parada) {
+
             function icones(parades) {
                 parades.features.forEach(function(parada) {
                     var p = parada.properties;
@@ -62,6 +79,7 @@ var Transit = function(http) {
             }
 
             var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icones);
+
             Object.defineProperties(parades, {
                 anada: {
                     get: function() {
@@ -71,6 +89,11 @@ var Transit = function(http) {
                 tornada: {
                     get: function() {
                         return this.then(filtraParades.bind(this, "T"));
+                    }
+                },
+                corresp: {
+                    get: function() {
+                        return http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '') + '/corresp');
                     }
                 }
             });

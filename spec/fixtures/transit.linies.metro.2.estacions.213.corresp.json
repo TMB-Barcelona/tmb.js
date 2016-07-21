@@ -1,0 +1,940 @@
+{
+ "type": "FeatureCollection",
+ "totalFeatures": 29,
+ "features": [
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7730",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1693742011485817,
+     41.39094627035072
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3588,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 57,
+    "CODI_LINIA": 39,
+    "NOM_LINIA": "39",
+    "DESC_LINIA": "Barceloneta / Horta",
+    "ORDRE_LINIA": 39,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772f",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.165804450110879,
+     41.387853637984
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3692,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 22,
+    "CODI_LINIA": 50,
+    "NOM_LINIA": "50",
+    "DESC_LINIA": "Collblanc / Trinitat Nova",
+    "ORDRE_LINIA": 50,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772e",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1647363781677647,
+     41.38761347004004
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3801,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 330,
+    "CODI_LINIA": 215,
+    "NOM_LINIA": "V15",
+    "DESC_LINIA": "Barceloneta / Vall d'Hebron",
+    "ORDRE_LINIA": 215,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 9,
+    "CODI_FAMILIA": 7,
+    "NOM_FAMILIA": "Verticals",
+    "ORDRE_FAMILIA": 12
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772d",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1675597230080714,
+     41.39013837146819
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3805,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 7,
+    "CODI_LINIA": 22,
+    "NOM_LINIA": "22",
+    "DESC_LINIA": "Pl. Catalunya / Av. Tibidabo",
+    "ORDRE_LINIA": 22,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772c",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1675597230080714,
+     41.39013837146819
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3809,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 8,
+    "CODI_LINIA": 24,
+    "NOM_LINIA": "24",
+    "DESC_LINIA": "Paral·lel / El Carmel",
+    "ORDRE_LINIA": 24,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772b",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.171675464781671,
+     41.39187016602525
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3907,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 169,
+    "CODI_LINIA": 7,
+    "NOM_LINIA": "7",
+    "DESC_LINIA": "Fòrum / Zona Universitària",
+    "ORDRE_LINIA": 7,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-772a",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.171675464781671,
+     41.39187016602525
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3911,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 327,
+    "CODI_LINIA": 212,
+    "NOM_LINIA": "H12",
+    "DESC_LINIA": "Gornal / Besòs Verneda",
+    "ORDRE_LINIA": 212,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 8,
+    "CODI_FAMILIA": 6,
+    "NOM_FAMILIA": "Horitzontals",
+    "ORDRE_FAMILIA": 11
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7729",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.171675464781671,
+     41.39187016602525
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3915,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 24,
+    "CODI_LINIA": 54,
+    "NOM_LINIA": "54",
+    "DESC_LINIA": "Estació del Nord / Campus Nord",
+    "ORDRE_LINIA": 54,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7728",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.171675464781671,
+     41.39187016602525
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3919,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 32,
+    "CODI_LINIA": 62,
+    "NOM_LINIA": "62",
+    "DESC_LINIA": "Pl. Catalunya / Ciutat Meridiana",
+    "ORDRE_LINIA": 62,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7727",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.170422578715327,
+     41.392008906298734
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 4136,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 21,
+    "CODI_LINIA": 47,
+    "NOM_LINIA": "47",
+    "DESC_LINIA": "Pl. Catalunya / Canyelles",
+    "ORDRE_LINIA": 47,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7726",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 133,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 81,
+    "CODI_LINIA": 15,
+    "NOM_LINIA": "R15",
+    "DESC_LINIA": "R15",
+    "ORDRE_LINIA": 15,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7725",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 134,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 80,
+    "CODI_LINIA": 14,
+    "NOM_LINIA": "R14",
+    "DESC_LINIA": "R14",
+    "ORDRE_LINIA": 14,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7724",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 135,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 79,
+    "CODI_LINIA": 13,
+    "NOM_LINIA": "R13",
+    "DESC_LINIA": "R13",
+    "ORDRE_LINIA": 13,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7723",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1691346502929294,
+     41.38760858434712
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 136,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 78,
+    "CODI_LINIA": 12,
+    "NOM_LINIA": "R12",
+    "DESC_LINIA": "R12",
+    "ORDRE_LINIA": 12,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7722",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 137,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 77,
+    "CODI_LINIA": 11,
+    "NOM_LINIA": "R11",
+    "DESC_LINIA": "R11",
+    "ORDRE_LINIA": 11,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7721",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1691346502929294,
+     41.38760858434712
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 138,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 75,
+    "CODI_LINIA": 7,
+    "NOM_LINIA": "R7",
+    "DESC_LINIA": "R7",
+    "ORDRE_LINIA": 7,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7720",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1691346502929294,
+     41.38760858434712
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 139,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 74,
+    "CODI_LINIA": 4,
+    "NOM_LINIA": "R4",
+    "DESC_LINIA": "R4",
+    "ORDRE_LINIA": 4,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771f",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.167846312978762,
+     41.390057124825155
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 746,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 5,
+    "CODI_LINIA": 4,
+    "NOM_LINIA": "L4",
+    "DESC_LINIA": "La Pau - Trinitat Nova",
+    "ORDRE_LINIA": 4,
+    "ID_OPERADOR": 1,
+    "NOM_OPERADOR": "Metro",
+    "CODI_OPERADOR": "001",
+    "ID_FAMILIA": 1,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Metro",
+    "ORDRE_FAMILIA": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771e",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.16534697064377,
+     41.39160315557566
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 754,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 2,
+    "CODI_LINIA": 3,
+    "NOM_LINIA": "L3",
+    "DESC_LINIA": "Zona Universitària - Trinitat Nova",
+    "ORDRE_LINIA": 3,
+    "ID_OPERADOR": 1,
+    "NOM_OPERADOR": "Metro",
+    "CODI_OPERADOR": "001",
+    "ID_FAMILIA": 1,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Metro",
+    "ORDRE_FAMILIA": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771d",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1691346502929294,
+     41.38760858434712
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1418,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 69,
+    "CODI_LINIA": 1,
+    "NOM_LINIA": "R1",
+    "DESC_LINIA": "R1",
+    "ORDRE_LINIA": 1,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771c",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1691346502929294,
+     41.38760858434712
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1419,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 73,
+    "CODI_LINIA": 3,
+    "NOM_LINIA": "R3",
+    "DESC_LINIA": "R3",
+    "ORDRE_LINIA": 3,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771b",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1420,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 72,
+    "CODI_LINIA": 22,
+    "NOM_LINIA": "R2S",
+    "DESC_LINIA": "R2 - Sud",
+    "ORDRE_LINIA": 22,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-771a",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1421,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 71,
+    "CODI_LINIA": 21,
+    "NOM_LINIA": "R2N",
+    "DESC_LINIA": "R2 - Nord",
+    "ORDRE_LINIA": 21,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7719",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1422,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 70,
+    "CODI_LINIA": 2,
+    "NOM_LINIA": "R2",
+    "DESC_LINIA": "R2",
+    "ORDRE_LINIA": 2,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 12,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Rodalies-BCN",
+    "ORDRE_FAMILIA": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7718",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1661476152434886,
+     41.39314373720504
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 1423,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 82,
+    "CODI_LINIA": 16,
+    "NOM_LINIA": "R16",
+    "DESC_LINIA": "R16",
+    "ORDRE_LINIA": 16,
+    "ID_OPERADOR": 5,
+    "NOM_OPERADOR": "Rodalies",
+    "CODI_OPERADOR": "004",
+    "ID_FAMILIA": 13,
+    "CODI_FAMILIA": 2,
+    "NOM_FAMILIA": "Rodalies-Regionals",
+    "ORDRE_FAMILIA": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7717",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1664308690297944,
+     41.38793112806899
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3539,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 132,
+    "CODI_LINIA": 68,
+    "NOM_LINIA": "68",
+    "DESC_LINIA": "Pl. Catalunya / Cornellà",
+    "ORDRE_LINIA": 68,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7716",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1664308690297944,
+     41.38793112806899
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3543,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 131,
+    "CODI_LINIA": 67,
+    "NOM_LINIA": "67",
+    "DESC_LINIA": "Pl. Catalunya / Cornellà",
+    "ORDRE_LINIA": 67,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7715",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1693742011485817,
+     41.39094627035072
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3580,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 332,
+    "CODI_LINIA": 217,
+    "NOM_LINIA": "V17",
+    "DESC_LINIA": "Port Vell / Carmel",
+    "ORDRE_LINIA": 217,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 9,
+    "CODI_FAMILIA": 7,
+    "NOM_FAMILIA": "Verticals",
+    "ORDRE_FAMILIA": 12
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "CORRESP_ESTACIONS_LINIA.fid--54d7064a_1560c8cf891_-7714",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1693742011485817,
+     41.39094627035072
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_CORRESP": 3584,
+    "ID_ESTACIO": 111,
+    "CODI_ESTACIO": 213,
+    "ID_LINIA_BASE": 6,
+    "CODI_LINIA_BASE": 2,
+    "ORDRE_BASE": 666,
+    "ID_LINIA": 20,
+    "CODI_LINIA": 45,
+    "NOM_LINIA": "45",
+    "DESC_LINIA": "Pg. Marítim / Horta",
+    "ORDRE_LINIA": 45,
+    "ID_OPERADOR": 2,
+    "NOM_OPERADOR": "TB",
+    "CODI_OPERADOR": "002",
+    "ID_FAMILIA": 3,
+    "CODI_FAMILIA": 1,
+    "NOM_FAMILIA": "Convencionals",
+    "ORDRE_FAMILIA": 13
+   }
+  }
+ ],
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::4326"
+  }
+ }
+}
