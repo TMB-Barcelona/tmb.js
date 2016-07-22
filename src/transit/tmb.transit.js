@@ -35,7 +35,14 @@ var Transit = function(http) {
                 return estacions;
             }
 
-            var estacions = http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(icones);
+            function sort(estacions) {
+                estacions.features.sort(function(f1, f2) {
+                    return f1.properties.ORDRE_ESTACIO - f2.properties.ORDRE_ESTACIO;
+                });
+                return estacions;
+            }
+
+            var estacions = http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(sort).then(icones);
 
             Object.defineProperties(estacions, {
                 corresp: {
