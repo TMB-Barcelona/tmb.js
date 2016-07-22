@@ -101,13 +101,20 @@ var Transit = function(http) {
         };
 
         var filtraParades = function(sentit, parades) {
-            parades.features = parades.features.filter(function(feature) {
+            var newParades = {
+                type: parades.features.type,
+                crs: parades.features.crs
+            };
+
+            newParades.features = parades.features.slice(0).filter(function(feature) {
                 return feature.properties.SENTIT == sentit;
             }).sort(function(f1, f2) {
                 return f1.properties.ORDRE - f2.properties.ORDRE;
             });
-            parades.totalFeatures = parades.features.length;
-            return parades;
+
+            newParades.totalFeatures = newParades.features.length;
+
+            return newParades;
         };
 
         return {
