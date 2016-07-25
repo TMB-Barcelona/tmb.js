@@ -62,7 +62,7 @@ var api = function(app_id_or_url, app_key) {
     
     var search = Search(http);
     var transit = Transit(http);
-    var map = Map(keys);
+    var map = Map(http, keys);
 
     return {
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),

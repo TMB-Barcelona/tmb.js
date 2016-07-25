@@ -1,4 +1,14 @@
-var Map = function(keys) {
+'use strict';
+var Transit = require('../transit/tmb.transit');
+
+var Map = function(http, keys) {
+
+    var transit = Transit(http);
+
+    var BCN_BBOX = [
+        [41.246, 1.898],
+        [41.533, 2.312]
+    ];
 
     var gwcLayer = function(name) {
         return L.tileLayer.wms("http://api.tmb.cat/v1/maps/gwc/wms", {
@@ -21,7 +31,7 @@ var Map = function(keys) {
     };
 
     var map = function(div) {
-        var map = new L.Map(div).setView([41.3987, 2.1574], 12);
+        var map = new L.Map(div).fitBounds(BCN_BBOX);
 
         var baseLayer = gwcLayer('TMB:CARTO_SOFT').addTo(map);
         var overlay;
@@ -42,20 +52,50 @@ var Map = function(keys) {
 
         var metro = function(linia) {
             setOverlay(metroLayer);
-            // TODO: If linia, filter & center on linia.
+
+            if (linia) {
+                transit.linies.metro(linia).info().then(function(response) {
+                    metroLayer.setParams({
+                        CQL_FILTER: 'CODI_LINIA=' + linia
+                    });
+                    map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                });
+            } else {
+                delete(metroLayer.wmsParams.CQL_FILTER);
+                map.fitBounds(BCN_BBOX);
+                metroLayer.redraw();
+            }
+
             return {
                 estacio: function(estacio) {
-                    // TODO: If estacio, filter & center on estacio.
+                    transit.linies.metro(linia || '').estacions(estacio).then(function(response) {
+                        map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                    });
                 }
             }
         };
 
         var bus = function(linia) {
             setOverlay(busLayer);
-            // TODO: If linia, filter & center on linia.
+
+            if (linia) {
+                transit.linies.bus(linia).info().then(function(response) {
+                    busLayer.setParams({
+                        CQL_FILTER: 'CODI_LINIA=' + linia
+                    });
+                    map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                });
+            } else {
+                delete(busLayer.wmsParams.CQL_FILTER);
+                map.fitBounds(BCN_BBOX);
+                busLayer.redraw();
+            }
+
             return {
                 parada: function(parada) {
-                    // TODO: If parada, filter & center on parada.
+                    transit.linies.bus(linia || '').parades(parada).then(function(response) {
+                        map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                    });
                 }
             }
         };
