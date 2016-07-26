@@ -3,6 +3,7 @@
 var axios = require("axios");
 var Search = require('./search/tmb.search');
 var Transit = require('./transit/tmb.transit');
+var Map = require('./map/tmb.map');
 
 /**
  * @classdesc
@@ -61,12 +62,14 @@ var api = function(app_id_or_url, app_key) {
     
     var search = Search(http);
     var transit = Transit(http);
+    var map = Map(http, keys);
 
     return {
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
         http: http,
         search: search,
-        transit: transit
+        transit: transit,
+        map: map
     }
 };
 
