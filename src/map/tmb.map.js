@@ -30,7 +30,7 @@ var Map = function(http, keys) {
         });
     };
 
-    var map = function(div) {
+    return function(div) {
         var map = new L.Map(div).fitBounds(BCN_BBOX);
 
         var baseLayer = gwcLayer('TMB:CARTO_SOFT').addTo(map);
@@ -50,7 +50,7 @@ var Map = function(http, keys) {
             }
         };
 
-        var metro = function(linia) {
+        map.metro = function(linia) {
             setOverlay(metroLayer);
 
             if (linia) {
@@ -75,7 +75,7 @@ var Map = function(http, keys) {
             }
         };
 
-        var bus = function(linia) {
+        map.bus = function(linia) {
             setOverlay(busLayer);
 
             if (linia) {
@@ -100,13 +100,8 @@ var Map = function(http, keys) {
             }
         };
 
-        return {
-            metro: metro,
-            bus: bus
-        };
+        return map;
     };
-
-    return map;
 };
 
 module.exports = Map;
