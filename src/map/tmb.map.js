@@ -14,7 +14,7 @@ var Map = function(http, keys) {
         return L.tileLayer.wms("http://api.tmb.cat/v1/maps/gwc/wms", {
             layers: name,
             format: 'image/png8',
-            transparent: true,
+            transparent: false,
             app_key: keys.app_key,
             app_id: keys.app_id
         });
