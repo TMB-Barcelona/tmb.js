@@ -16,20 +16,22 @@ var icon = {
             results.docs.forEach(function(result) {
                 if (result.hasOwnProperty('icona')) {
                     // Defaults to an ugly placeholder
-                    result.icona = placeholder(19, "0000FF", "FFFFFF", result.icona);
+                    var url = placeholder(19, "0000FF", "FFFFFF", result.icona);
 
                     // Apply pictos for some known cases
                     if (result.icona == "Bus-Parada") {
-                        result.icona = picto("BUS");
+                        url = picto("BUS");
                     } else if (result.icona == "Bus-Interc") {
-                        result.icona = picto("INTERC");
+                        url = picto("INTERC");
                     } else if (result.entitat == "Línies" && (result.tipus == "Vertical" || result.tipus == "Horitzontal" )) {
-                        result.icona = picto("NXB");
+                        url = picto("NXB");
                     } else if (result.icona == "FM") {
-                        result.icona = picto(result.icona);
+                        url = picto(result.icona);
                     } else if (result.entitat == "Línies" && result.tipus == "Metro") {
-                        result.icona = picto(result.icona);
+                        url = picto(result.icona);
                     }
+
+                    result.icona = url;
                 }
             });
         }
