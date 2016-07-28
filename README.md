@@ -220,3 +220,19 @@ function parseParades(featureCollection) {
     });
 }
 ```
+
+## Map
+
+```javascript
+var map = api.map(el); // Create an empty TMB map and render it to the given DOM element.
+
+map.locate({ watch:true, setView:true}); // It returns a Leaflet map, so all the native map methods can be called.
+
+map.metro();   // Show all metro lines.
+map.metro(2);  // Show a particular metro line.
+map.metro(2).estacio(213); // Show a particular metro station.
+
+map.bus();   // Show all bus lines.
+map.bus(22); // Show a particular bus line.
+map.bus(22).parada(2608); // Show a particular bus stop.
+```
