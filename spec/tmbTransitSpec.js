@@ -123,6 +123,23 @@ describe("tmb.transit.js spec:", function() {
                 done();
             }
         });
+
+        it("should get one parada from its identifier, even if not bound to any line", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.parades.2.json'));
+            });
+
+            api.transit.parades(2).then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/parades/2');
+                expect(response.totalFeatures).toBe(1);
+                response.features.forEach(function(feature) {
+                    expect(feature.properties.CODI_PARADA).toBe(2);
+                });
+                done();
+            }
+        });
     });
 
     describe("Get Metro Estacions", function() {
@@ -164,25 +181,37 @@ describe("tmb.transit.js spec:", function() {
         });
     });
 
-     describe("Get Correspondencies i Accessos", function() {
+    describe("Get Correspondencies i Accessos", function() {
         var api;
 
         beforeEach(function() {
             api = tmb(keys.app_id, keys.app_key);
         });
 
-        it("should get all correspondencies for a Bus Stop", function(done) {
+        it("should get all correspondencies for a Bus Stop on a line", function(done) {
             spyOn(api.http, 'get').and.callFake(function() {
                 return Promise.resolve(readJSON('spec/fixtures/transit.linies.bus.22.parades.2878.corresp.json'));
             });
-
-            console.log(api.transit.linies.bus(22).parades(2878));
 
             api.transit.linies.bus(22).parades(2878).corresp.then(handleSuccess, fail);
 
             function handleSuccess(response) {
                 expect(api.http.get).toHaveBeenCalledWith('transit/linies/bus/22/parades/2878/corresp');
                 expect(response.totalFeatures).toBe(8);
+                done();
+            }
+        });
+
+        it("should get all correspondencies for a Bus Stop regardless its belonging to a line", function(done) {
+            spyOn(api.http, 'get').and.callFake(function() {
+                return Promise.resolve(readJSON('spec/fixtures/transit.parades.2.corresp.json'));
+            });
+
+            api.transit.parades(2).corresp.then(handleSuccess, fail);
+
+            function handleSuccess(response) {
+                expect(api.http.get).toHaveBeenCalledWith('transit/parades/2/corresp');
+                expect(response.totalFeatures).toBe(0);
                 done();
             }
         });

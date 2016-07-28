@@ -66,6 +66,18 @@ var Transit = function(http) {
 
     };
 
+    function icones_parades(parades) {
+        parades.features.forEach(function(parada) {
+            var p = parada.properties;
+            var size = "19";
+            var bg_color = p.COLOR_REC;
+            var fg_color = "FFFFFF"; // White
+            var text = p.NOM_LINIA;
+            p.icona = "http://placehold.it/" + size + "/" + bg_color + "/" + fg_color + "?text=" + text;
+        });
+        return parades;
+    }
+
     linies.bus = function(linia) {
         var info = function() {
             return http.get("transit/linies/bus/" + (linia || ''));
@@ -73,19 +85,7 @@ var Transit = function(http) {
 
         var parades = function(parada) {
 
-            function icones(parades) {
-                parades.features.forEach(function(parada) {
-                    var p = parada.properties;
-                    var size = "19";
-                    var bg_color = p.COLOR_REC;
-                    var fg_color = "FFFFFF"; // White
-                    var text = p.NOM_LINIA;
-                    p.icona = "http://placehold.it/" + size + "/" + bg_color + "/" + fg_color + "?text=" + text;
-                });
-                return parades;
-            }
-
-            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icones);
+            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icones_parades);
 
             Object.defineProperties(parades, {
                 anada: {
@@ -130,8 +130,23 @@ var Transit = function(http) {
         }
     };
 
+    var parades = function(parada) {
+        var parades = http.get('transit/parades/' + (parada || '')).then(icones_parades);
+
+        Object.defineProperties(parades, {
+            corresp: {
+                get: function() {
+                    return http.get("transit/parades/" + (parada || '') + '/corresp');
+                }
+            }
+        });
+        return parades;
+
+    };
+
     return {
-        linies: linies
+        linies: linies,
+        parades: parades
     };
 };
 

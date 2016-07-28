@@ -133,8 +133,14 @@ api.transit.linies.bus(22).parades().tornada.then(parseParades);
 // Get a specific stop from a bus line (doubled for stops on line ends)
 api.transit.linies.bus(22).parades(2608).then(parseParades);
 
-// Get all correspondencies for a bus stop
-api.transit.linies.bus(22).parades(2608).corresp.then(parseParades);
+// Get all correspondencies for a bus stop on a line
+api.transit.linies.bus(22).parades(2608).corresp.then(parseCorresp);
+
+// Get a specific stop, not bound to a specific line
+api.transit.parades(2).then(parseParades);
+
+// Get all correspondencies for a bus stop regardless of the line it belongs
+api.transit.parades(2).corresp.then(parseCorresp);
 
 
 /* METRO */

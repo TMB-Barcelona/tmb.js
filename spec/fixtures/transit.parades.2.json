@@ -1,0 +1,44 @@
+{
+ "type": "FeatureCollection",
+ "totalFeatures": 1,
+ "features": [
+  {
+   "type": "Feature",
+   "id": "PARADES_ACTIVES.fid--54d7064a_15631efa41b_f79",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.1989850510752147,
+     41.39310425052752
+    ]
+   },
+   "geometry_name": "GEOMETRY",
+   "properties": {
+    "ID_PARADA": 680249,
+    "CODI_PARADA": 2,
+    "NOM_PARADA": "Av. Icària-Àlaba",
+    "DESC_PARADA": "Av. Icària/Frederic Mompou",
+    "CODI_INTERC": null,
+    "NOM_INTERC": null,
+    "NOM_TIPUS_PARADA": "NOU4MS",
+    "DESC_TIPUS_PARADA": "Nova Marq. Pal·li Simple",
+    "TIPIFICACIO_PARADA": "X",
+    "ADRECA": "Av. Icària, 193",
+    "ID_POBLACIO": 748,
+    "NOM_POBLACIO": "Barcelona",
+    "ID_DISTRICTE": 621,
+    "NOM_DISTRICTE": "Sant Martí",
+    "DATA_INICI": "2006-07-17Z",
+    "DATA_FI": null,
+    "NOM_VIA": "Avinguda d'Icària",
+    "NOM_PROPERA_VIA": "Carrer de Frederic Mompou"
+   }
+  }
+ ],
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::4326"
+  }
+ }
+}
