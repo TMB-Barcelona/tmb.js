@@ -9,6 +9,8 @@
 'use strict';
 var Page = require('./tmb.search.page');
 
+var icon = require('../helpers/tmb.icon');
+
 var Search = function(http) {
     var ENTITATS = {
         LINIES: 'Línies',
@@ -60,45 +62,10 @@ var Search = function(http) {
     }
 
     function parse(response) {
-        if(response && response.hasOwnProperty("response")) {
+        if (response && response.hasOwnProperty("response")) {
             response = response.response;
-            if (response.hasOwnProperty("docs")) {
-                response.docs = response.docs.map(function (item) {
-                    if (item.hasOwnProperty('icona')) {
-                        item.icona = icon_url(item);
-                    }
-                    return item;
-                });
-            }
         }
-        return response;
-    }
-
-    // TODO change this hack to a set of normalized icons...
-    function icon_url(item) {
-        if (item.hasOwnProperty('icona')) {
-            // Default value is a placeholder
-            var size = "19";
-            var bg_color = "0000FF"; // Blue
-            var fg_color = "FFFFFF"; // White
-            var text = item.icona;
-            var url = "http://placehold.it/"+size+"/"+bg_color+"/"+fg_color+"?text="+text;
-
-            // Some better known cases
-            var base = "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/";
-            if (item.icona == "Bus-Parada") {
-                url = base + "BUS.png";
-            } else if (item.icona == "FM") {
-                url = base + item.icona + ".png";
-            } else if (item.icona == "Bus-Interc") {
-                url = base + "INTERC.png";
-            } else if (item.entitat == "Línies" && item.tipus == "Metro") {
-                url = base + item.icona + ".png";
-            } else if (item.entitat == "Línies" && (item.tipus == "Vertical" || item.tipus == "Horitzontal" )) {
-                url = base + "NXB.png";
-            }
-        }
-        return url;
+        return icon.search(response);
     }
 
     return {

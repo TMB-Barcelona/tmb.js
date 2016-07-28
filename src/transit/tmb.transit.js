@@ -8,6 +8,8 @@
 
 var Transit = function(http) {
 
+    var icon = require('../helpers/tmb.icon');
+
     var linies = function(linia) {
 
         var info = function() {
@@ -26,15 +28,6 @@ var Transit = function(http) {
 
         var estacions = function(estacio) {
 
-            function icones(estacions) {
-                estacions.features.forEach(function(estacio) {
-                    var base = "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/";
-                    var p = estacio.properties;
-                    p.icona = base + p.PICTO + ".png";
-                });
-                return estacions;
-            }
-
             function sort(estacions) {
                 estacions.features.sort(function(f1, f2) {
                     return f1.properties.ORDRE_ESTACIO - f2.properties.ORDRE_ESTACIO;
@@ -42,7 +35,7 @@ var Transit = function(http) {
                 return estacions;
             }
 
-            var estacions = http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(sort).then(icones);
+            var estacions = http.get("transit/linies/metro/" + linia + '/estacions/' + (estacio || '')).then(sort).then(icon.estacions);
 
             Object.defineProperties(estacions, {
                 corresp: {
@@ -66,18 +59,6 @@ var Transit = function(http) {
 
     };
 
-    function icones_parades(parades) {
-        parades.features.forEach(function(parada) {
-            var p = parada.properties;
-            var size = "19";
-            var bg_color = p.COLOR_REC;
-            var fg_color = "FFFFFF"; // White
-            var text = p.NOM_LINIA;
-            p.icona = "http://placehold.it/" + size + "/" + bg_color + "/" + fg_color + "?text=" + text;
-        });
-        return parades;
-    }
-
     linies.bus = function(linia) {
         var info = function() {
             return http.get("transit/linies/bus/" + (linia || ''));
@@ -85,7 +66,7 @@ var Transit = function(http) {
 
         var parades = function(parada) {
 
-            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icones_parades);
+            var parades = http.get("transit/linies/bus/" + linia + '/parades/' + (parada || '')).then(icon.parades);
 
             Object.defineProperties(parades, {
                 anada: {
@@ -131,7 +112,7 @@ var Transit = function(http) {
     };
 
     var parades = function(parada) {
-        var parades = http.get('transit/parades/' + (parada || '')).then(icones_parades);
+        var parades = http.get('transit/parades/' + (parada || '')).then(icon.parades);
 
         Object.defineProperties(parades, {
             corresp: {
