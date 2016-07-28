@@ -3,6 +3,21 @@ var Transit = require('../transit/tmb.transit');
 
 var Map = function(http, keys) {
 
+    // Tiny little class to execute a sequence of async actions in the same order they had been enqueued.
+    function PromiseQueue() {
+        var last = Promise.resolve();
+        return {
+            push: function(action) {
+                var coming = new Promise(action); // Action takes two parameters, "solve" and "reject".
+                last.then(coming);
+                last = coming;
+            }
+        }
+    };
+
+    // Used in map actions, so the last view will match the last command issued by the user.
+    var mapActions = new PromiseQueue();
+
     var transit = Transit(http);
 
     var BCN_BBOX = [
@@ -31,45 +46,56 @@ var Map = function(http, keys) {
     };
 
     return function(div) {
-        var map = new L.Map(div).fitBounds(BCN_BBOX);
-
-        var baseLayer = gwcLayer('TMB:CARTO_SOFT').addTo(map);
+        var baseLayer = gwcLayer('TMB:CARTO_SOFT');
         var overlay;
 
         var busLayer = wmsLayer('TMB:XARXA_BUS');
         var metroLayer = wmsLayer('TMB:XARXA_METRO');
 
+        var map = new L.Map(div).fitBounds(BCN_BBOX);
+        baseLayer.addTo(map);
+
         var setOverlay = function(layer) {
-            if (overlay) {
-                map.removeLayer(overlay);
-                overlay = null;
-            }
-            if (layer) {
-                overlay = layer.addTo(map);
-                // TODO reset filters, if needed.
-            }
+            mapActions.push(function(next) {
+                if (overlay) {
+                    map.removeLayer(overlay);
+                    overlay = null;
+                }
+                if (layer) {
+                    overlay = layer.addTo(map);
+                    // TODO reset filters, if needed.
+                }
+                next();
+            });
         };
 
         map.metro = function(linia) {
             setOverlay(metroLayer);
 
             if (linia) {
-                transit.linies.metro(linia).info().then(function(response) {
-                    metroLayer.setParams({
-                        CQL_FILTER: 'CODI_LINIA=' + linia
-                    });
-                    map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                mapActions.push(function(next) {
+                    transit.linies.metro(linia).info().then(function(response) {
+                        metroLayer.setParams({CQL_FILTER: 'CODI_LINIA=' + linia});
+                        map.fitBounds(L.geoJson(response).getBounds(), {animate: false});
+                        next();
+                    }, next);
                 });
             } else {
-                delete(metroLayer.wmsParams.CQL_FILTER);
-                map.fitBounds(BCN_BBOX);
-                metroLayer.redraw();
+                mapActions.push(function(next) {
+                    delete(metroLayer.wmsParams.CQL_FILTER);
+                    map.fitBounds(BCN_BBOX);
+                    metroLayer.redraw();
+                    next();
+                });
             }
 
             return {
                 estacio: function(estacio) {
-                    transit.linies.metro(linia || '').estacions(estacio).then(function(response) {
-                        map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                    mapActions.push(function(next) {
+                        transit.linies.metro(linia || '').estacions(estacio).then(function (response) {
+                            map.fitBounds(L.geoJson(response).getBounds(), {animate: false});
+                            next();
+                        }, next);
                     });
                 }
             }
@@ -79,22 +105,29 @@ var Map = function(http, keys) {
             setOverlay(busLayer);
 
             if (linia) {
-                transit.linies.bus(linia).info().then(function(response) {
-                    busLayer.setParams({
-                        CQL_FILTER: 'CODI_LINIA=' + linia
-                    });
-                    map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
-                });
+                mapActions.push(function(next) {
+                    transit.linies.bus(linia).info().then(function (response) {
+                        busLayer.setParams({CQL_FILTER: 'CODI_LINIA=' + linia});
+                        map.fitBounds(L.geoJson(response).getBounds(), {animate: false});
+                        next();
+                    }, next);
+                })
             } else {
-                delete(busLayer.wmsParams.CQL_FILTER);
-                map.fitBounds(BCN_BBOX);
-                busLayer.redraw();
+                mapActions.push(function(next) {
+                    delete(busLayer.wmsParams.CQL_FILTER);
+                    map.fitBounds(BCN_BBOX);
+                    busLayer.redraw();
+                    next();
+                });
             }
 
             return {
                 parada: function(parada) {
-                    transit.linies.bus(linia || '').parades(parada).then(function(response) {
-                        map.fitBounds(L.geoJson(response).getBounds(), {animate:false});
+                    mapActions.push(function(next) {
+                        transit.linies.bus(linia || '').parades(parada).then(function(response) {
+                            map.fitBounds(L.geoJson(response).getBounds(), {animate: false});
+                            next();
+                        }, next);
                     });
                 }
             }
