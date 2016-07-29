@@ -29,6 +29,8 @@ var icon = {
                         url = picto(result.icona);
                     } else if (result.entitat == "Línies" && result.tipus == "Metro") {
                         url = picto(result.icona);
+                    } else if (result.entitat = "Estacions") {
+                        url = picto(result.icona);
                     }
 
                     result.icona = url;
@@ -45,7 +47,9 @@ var icon = {
     },
     parades: function(parades) {
         parades.features.forEach(function(parada) {
-            parada.properties.icona = placeholder(19, parada.properties.COLOR_REC, "FFFFFF", parada.properties.NOM_LINIA);
+            if (parada.properties.hasOwnProperty("NOM_LINIA")) {
+                parada.properties.icona = placeholder(19, parada.properties.COLOR_REC, "FFFFFF", parada.properties.NOM_LINIA);
+            }
         });
         return parades;
     }
