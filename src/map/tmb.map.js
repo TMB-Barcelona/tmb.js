@@ -127,7 +127,13 @@ var Map = function(http, keys) {
             return {
                 parada: function(parada) {
                     mapActions.push(function(next) {
-                        transit.linies.bus(linia || '').parades(parada).then(function(response) {
+                        var parades;
+                        if(linia) {
+                            parades = transit.linies.bus(linia).parades(parada);
+                        } else {
+                            parades = transit.parades(parada);
+                        }
+                        parades.then(function(response) {
                             map.fitBounds(L.geoJson(response).getBounds(), {animate: false});
                             next();
                         }, next);
