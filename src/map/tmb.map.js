@@ -8,12 +8,15 @@ var Map = function(http, keys) {
         var last = Promise.resolve();
         return {
             push: function(action) {
-                var coming = new Promise(action); // Action takes two parameters, "solve" and "reject".
-                last.then(coming);
+                var coming = new Promise(function(resolve) {
+                    last.then(function() {
+                        action(resolve); // Action callback should call resolve() to allow the next enqueued action to be fired up.
+                    });
+                });
                 last = coming;
             }
         }
-    };
+    }
 
     // Used in map actions, so the last view will match the last command issued by the user.
     var mapActions = new PromiseQueue();
