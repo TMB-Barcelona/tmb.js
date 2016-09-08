@@ -29,7 +29,7 @@ var icon = {
                         url = picto(result.icona);
                     } else if (result.entitat == "Línies" && result.tipus == "Metro") {
                         url = picto(result.icona);
-                    } else if (result.entitat = "Estacions") {
+                    } else if (result.entitat == "Estacions") {
                         url = picto(result.icona);
                     }
 
