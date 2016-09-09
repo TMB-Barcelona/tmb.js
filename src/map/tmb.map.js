@@ -1,5 +1,6 @@
 'use strict';
 var Transit = require('../transit/tmb.transit');
+var L = require('../../node_modules/leaflet/dist/leaflet');
 
 var Map = function(http, keys) {
 
