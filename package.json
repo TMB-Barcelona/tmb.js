@@ -35,12 +35,12 @@
     "phantomjs-prebuilt": "^2.1.7",
     "webpack-dev-server": "^1.14.1",
     "jsonfile": "^2.2.3",
-    "prompt": "^1.0.0",
-    "webpack": "^1.12.14"
+    "prompt": "^1.0.0"
   },
   "dependencies": {
     "axios": "^0.9.1",
     "es6-promise": "^3.1.2",
-    "leaflet": "^0.7.7"
+    "leaflet": "^0.7.7",
+    "webpack": "^1.12.14"
   }
 }
