@@ -57,6 +57,11 @@ var Map = function(http, keys) {
     };
 
     return function(div) {
+
+        var control = {
+
+        };
+
         var baseLayer = gwcLayer('TMB:CARTO_SOFT');
         var orto = ortoLayer();
 
@@ -153,8 +158,18 @@ var Map = function(http, keys) {
             }
         };
 
-        L.control.layers({'Orto': orto, 'Carto': baseLayer},
-            {'Metro': metroLayer, 'Bus': busLayer}).addTo(map);
+        map.activateControl = function(controlId) {
+            control[controlId] = true;
+        };
+
+        map.deactivateControl = function(controlId) {
+            control[controlId] = false;
+        };
+
+        if (control.layers) {
+            L.control.layers({'Ortofotografía': orto, 'Cartografía': baseLayer},
+                {'Metro': metroLayer, 'Bus': busLayer}).addTo(map);
+        }
 
         return map;
     };
