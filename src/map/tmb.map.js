@@ -1,5 +1,6 @@
 'use strict';
 var Transit = require('../transit/tmb.transit');
+var L = require('../../node_modules/leaflet/dist/leaflet');
 
 var Map = function(http, keys) {
 
@@ -48,15 +49,31 @@ var Map = function(http, keys) {
         });
     };
 
-    return function(div) {
-        var baseLayer = gwcLayer('TMB:CARTO_SOFT');
-        var overlay;
+    var ortoLayer = function() {
+        return L.tileLayer.wms("http://www.ign.es/wms-inspire/pnoa-ma", {
+            layers: 'OI.OrthoimageCoverage',
+            format: 'image/png',
+            transparent: true
+        });
+    };
 
+    return function(div) {
+
+        var control = {
+
+        };
+
+        var baseLayer = gwcLayer('TMB:CARTO_SOFT');
+        var orto = ortoLayer();
+
+        var overlay;
         var busLayer = wmsLayer('TMB:XARXA_BUS');
+
         var metroLayer = wmsLayer('TMB:XARXA_METRO');
 
-        var map = new L.Map(div).fitBounds(BCN_BBOX);
-        baseLayer.addTo(map);
+        var map = new L.Map(div, {
+            layers: [baseLayer]
+        }).fitBounds(BCN_BBOX);
 
         var setOverlay = function(layer) {
             mapActions.push(function(next) {
@@ -141,6 +158,19 @@ var Map = function(http, keys) {
                 }
             }
         };
+
+        map.activateControl = function(controlId) {
+            control[controlId] = true;
+        };
+
+        map.deactivateControl = function(controlId) {
+            control[controlId] = false;
+        };
+
+        if (control.layers) {
+            L.control.layers({'Ortofotografía': orto, 'Cartografía': baseLayer},
+                {'Metro': metroLayer, 'Bus': busLayer}).addTo(map);
+        }
 
         return map;
     };
