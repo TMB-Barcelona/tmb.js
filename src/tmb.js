@@ -11,11 +11,8 @@ var Map = require('./map/tmb.map');
  * Get app_id and app_key from
  *      https://developer.tmb.cat/
  *      
- *
- * @param app_id
+ * @param app_id_or_url
  * @param app_key
- * @param {object} options:
- *      version {Number}: indicates the api version to use. Default: v1
  *
  * @api experimental
  */
@@ -65,6 +62,7 @@ var api = function(app_id_or_url, app_key) {
     var map = Map(http, keys);
 
     return {
+        keys: keys,
         helloWorld: "Hello World! Your API keys are " + JSON.stringify(http.defaults.params),
         http: http,
         search: search,
