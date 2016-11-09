@@ -1,6 +1,6 @@
 'use strict';
 
-var Map = function(http, keys) {
+var Map = function() {
 
     return  {
         BCN_BBOX: [[41.246, 1.898],
