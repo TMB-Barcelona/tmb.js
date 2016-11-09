@@ -1,6 +1,6 @@
 # tmb.js
 
-[![Build Status](https://travis-ci.org/geomatico/tmb.js.svg?branch=develop)](https://travis-ci.org/geomatico/tmb.js)
+[![Build Status](https://travis-ci.org/TMB-Barcelona/tmb.js.svg?branch=develop)](https://travis-ci.org/TMB-Barcelona/tmb.js)
 
 TMB API Javascript library
 
