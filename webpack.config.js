@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/tmb.js',
+    entry: './src/tmb',
     output: {
         path: './dist',
         filename: 'tmb.js',

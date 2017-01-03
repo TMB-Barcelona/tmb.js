@@ -7,7 +7,7 @@
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "webpack",
+    "postinstall": "webpack --display-error-details",
     "keys": "node tools/ensure_api_keys.js",
     "test": "npm run keys && karma start karma.conf.js",
     "start": "npm run keys && webpack-dev-server --inline"
