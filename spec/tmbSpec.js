@@ -24,7 +24,7 @@ describe("tmb.js spec:", function() {
             scope: "openid"
         }).then(createApi).catch(function(cause) {
             console.log(cause);
-            fail(cause);
+            fail(JSON.stringify(cause,null,2));
         });
 
         function createApi(response) {
