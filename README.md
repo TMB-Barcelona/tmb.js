@@ -31,8 +31,11 @@ Then, include the built ``dist/tmb.js`` library, and instantiate with your API k
 		// Alternatively, indicate a JSON file location (URL) containing: {"app_id":"<your_app_id>","app_key":"<your_app_key>"}
 		var api_2 = tmb("path/to/api_keys.json");
 
-		// Display a greeting message
-		console.log(api.helloWorld);
+		// Access API v3 providing a valid Auth0 token from an App.
+		// Note the async constructor 
+		tmb.v3('app_client_id, app_id_token').then(function(api) {
+		    // Use api here
+		});
 	</script>
 </head>
 <body>

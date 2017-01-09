@@ -1,13 +1,13 @@
 {
   "name": "tmb.js",
-  "version": "0.1.0",
+  "version": "0.3.0-SNAPSHOT",
   "description": "TMB javascript library",
-  "main": "dist/tmb.js",
+  "main": "src/tmb.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "webpack --display-error-details",
+    "build": "npm run keys && webpack --display-error-details",
     "keys": "node tools/ensure_api_keys.js",
     "test": "npm run keys && karma start karma.conf.js",
     "start": "npm run keys && webpack-dev-server --inline"
@@ -19,13 +19,14 @@
   "author": "Oscar Fonts; Micho Garcia",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/geomatico/tmb.js/issues"
+    "url": "https://github.com/TMB-Barcelona/tmb.js/issues"
   },
-  "homepage": "https://github.com/geomatico/tmb.js#readme",
+  "homepage": "https://github.com/TMB-Barcelona/tmb.js#readme",
   "devDependencies": {
     "file-exists": "^1.0.0",
     "http-server": "^0.9.0",
     "jasmine-core": "^2.4.1",
+    "jsonfile": "^2.2.3",
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
@@ -33,14 +34,12 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "webpack-dev-server": "^1.14.1",
-    "jsonfile": "^2.2.3",
-    "prompt": "^1.0.0"
+    "prompt": "^1.0.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "axios": "^0.9.1",
-    "es6-promise": "^3.1.2",
-    "leaflet": "^0.7.7",
-    "webpack": "^1.12.14"
+    "es6-promise": "^3.1.2"
   }
 }
