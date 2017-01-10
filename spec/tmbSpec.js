@@ -1,30 +1,49 @@
-/**
- * Created by michogarcia on 17/03/16.
- */
 describe("tmb.js spec:", function() {
     var tmb = require('../src/tmb');
-    var keys = readJSON('api_keys.json');
-    var api = tmb(keys.app_id, keys.app_key);
 
-    it("should have a hello world function returning id and key", function() {
-        var greeting = api.helloWorld;
-        expect(greeting).toBeTruthy();
-        expect(greeting).toContain(keys.app_id);
-        expect(greeting).toContain(keys.app_key);
-    });
+    it("API v2 should use app_id and app_key credentials", function(done) {
+        var keys = readJSON('api_keys.json');
+        var api_v1 = tmb(keys.app_id, keys.app_key);
 
-    it("should read keys from a json file", function(){
-        var api2 = tmb('/base/api_keys.json');
-        var greeting = api2.helloWorld;
-        expect(greeting).toBeTruthy();
-        expect(greeting).toContain(keys.app_id);
-        expect(greeting).toContain(keys.app_key);
-    });
-
-    it("should make real HTTP calls and get something in response", function(done) {
-        api.search.query("catalunya").then(function(response) {
+        api_v1.search.query("catalunya").then(function(response) {
             expect(response.page.totalRecords).toBeGreaterThan(0);
             done();
-        }, fail)
+        }, fail);
+    });
+
+    it("API v3 should use an auth0 token requested by delegation", function(done) {
+        var axios = require('axios');
+        var test_user = readJSON('auth0_user.json');
+
+        var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/ro', {
+            connection: "Username-Password-Authentication",
+            grant_type: "password",
+            client_id: test_user.client_id,
+            username: test_user.username,
+            password: test_user.password,
+            scope: "openid"
+        });
+
+        getAppToken.then(getApi).then(search).then(parse).catch(showError);
+
+        function getApi(response) {
+            var id_token = response.data.id_token;
+            if(!id_token) fail(response.data);
+            return tmb.v3(test_user.client_id, id_token);
+        }
+
+        function search(api_v3) {
+            return api_v3.search.query("catalunya");
+        }
+
+        function parse(response) {
+            expect(response.page.totalRecords).toBeGreaterThan(0);
+            done();
+        }
+
+        function showError(response) {
+            fail(JSON.stringify(response,null,2));
+        }
+
     });
 });

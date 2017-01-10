@@ -1,4 +1,6 @@
 .idea/
 node_modules/
 api_keys.json
+auth0_user.json
+secrets.tar
 dist/
