@@ -58,7 +58,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Firefox'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -70,7 +70,7 @@ module.exports = function(config) {
   };
 
   if (process.env.TRAVIS) {
-    configuration.browsers = ['PhantomJS'];
+    configuration.browsers = ['Firefox'];
   }
 
   config.set(configuration);
