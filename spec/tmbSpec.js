@@ -22,9 +22,8 @@ describe("tmb.js spec:", function() {
             username: test_user.username,
             password: test_user.password,
             scope: "openid"
-        }).then(createApi).catch(function(cause) {
-            console.log(cause);
-            fail(JSON.stringify(cause,null,2));
+        }).then(createApi).catch(function(response) {
+            fail(response.data.error_description);
         });
 
         function createApi(response) {
