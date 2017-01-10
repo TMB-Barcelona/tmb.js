@@ -3,7 +3,7 @@ sudo: required
 node_js:
 - '6'
 before_install:
-- echo -e "\n212.145.241.20 api3.tmb.cat" | sudo tee -a /etc/hosts
+- echo -e "\n212.145.241.20 api.tmb.cat" | sudo tee -a /etc/hosts
 - echo "212.145.241.20 api1.tmb.cat" | sudo tee -a /etc/hosts
 - echo "212.145.241.20 api2.tmb.cat" | sudo tee -a /etc/hosts
 - echo "212.145.241.20 api3.tmb.cat" | sudo tee -a /etc/hosts

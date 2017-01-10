@@ -15,30 +15,35 @@ describe("tmb.js spec:", function() {
         var axios = require('axios');
         var test_user = readJSON('auth0_user.json');
 
-        axios.post('https://tmb.eu.auth0.com/oauth/ro', {
+        var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/ro', {
             connection: "Username-Password-Authentication",
             grant_type: "password",
             client_id: test_user.client_id,
             username: test_user.username,
             password: test_user.password,
             scope: "openid"
-        }).then(createApi).catch(function(response) {
-            fail(response.data.error_description);
         });
 
-        function createApi(response) {
+        getAppToken.then(getApi).then(search).then(parse).catch(showError);
+
+        function getApi(response) {
             var id_token = response.data.id_token;
             if(!id_token) fail(response.data);
-            tmb.v3(test_user.client_id, id_token).then(search);
+            return tmb.v3(test_user.client_id, id_token);
         }
 
         function search(api_v3) {
-            api_v3.search.query("catalunya").then(parse, fail);
+            return api_v3.search.query("catalunya");
         }
 
         function parse(response) {
             expect(response.page.totalRecords).toBeGreaterThan(0);
             done();
         }
+
+        function showError(response) {
+            fail(JSON.stringify(response,null,2));
+        }
+
     });
 });
