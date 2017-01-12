@@ -82,7 +82,7 @@ api.v3 = function(client_id, id_token) {
 
     function createApi(response) {
         var http = axios.create({
-            baseURL: "https://api.tmb.cat/v3/",
+            baseURL: "https://labs.tmb.cat/v3/",
             headers: {
                 'Authorization': 'Bearer ' + response.data.id_token
             }
