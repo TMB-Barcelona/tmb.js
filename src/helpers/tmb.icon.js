@@ -7,7 +7,7 @@ function picto(name) {
 
 // An ugly placeholder
 function placeholder(size, bg_color, fg_color, text) {
-    return "http://placehold.it/" + size.toString() + "/" + bg_color + "/" + fg_color + "?text=" + text;
+    return "https://placehold.it/" + size.toString() + "/" + bg_color + "/" + fg_color + "?text=" + text;
 }
 
 var icon = {

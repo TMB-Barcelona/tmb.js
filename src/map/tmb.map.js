@@ -9,25 +9,25 @@ var Map = function() {
         BCN_ZOOM: 8,
         LAYERS: {
             CARTO: {
-                url: "http://api.tmb.cat/v1/maps/gwc/wms",
+                url: "https://api.tmb.cat/v1/maps/gwc/wms",
                 layers: "TMB:CARTO_SOFT",
                 format: "image/png8",
                 name: "Ortofotografía"
             },
             BUS: {
-                url: "http://api.tmb.cat/v1/maps/wms",
+                url: "https://api.tmb.cat/v1/maps/wms",
                 layers: "TMB:XARXA_BUS",
                 format: "image/png8",
                 name: "Bus"
             },
             METRO: {
-                url: "http://api.tmb.cat/v1/maps/wms",
+                url: "https://api.tmb.cat/v1/maps/wms",
                 layers: "TMB:XARXA_METRO",
                 format: "image/png8",
                 name: "Metro"
             },
             PNOA: {
-                url: "http://www.ign.es/wms-inspire/pnoa-ma",
+                url: "https://www.ign.es/wms-inspire/pnoa-ma",
                 layers: 'OI.OrthoimageCoverage',
                 format: 'image/png'
             }

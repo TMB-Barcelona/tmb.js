@@ -10,7 +10,7 @@ TMB API Javascript library
 * Install dependencies and development API keys: ``npm install``.
 * Test: ``npm test``.
 * Build: ``npm run build`` and check the ``dist/`` directory.
-* Run examples: ``npm start`` and open http://localhost:8080/webpack-dev-server/examples/
+* Run examples: ``npm start`` and open https://localhost:8080/webpack-dev-server/examples/
 
 
 ## Usage

@@ -10,7 +10,7 @@
     "build": "npm run keys && webpack --display-error-details",
     "keys": "node tools/ensure_api_keys.js",
     "test": "npm run keys && karma start karma.conf.js",
-    "start": "npm run keys && webpack-dev-server --inline"
+    "start": "npm run keys && webpack-dev-server --https --inline"
   },
   "repository": {
     "type": "git",
