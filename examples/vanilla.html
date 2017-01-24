@@ -10,14 +10,11 @@
 		// Instantiate with user keys
 		var api = tmb("../api_keys.json");
 
-		// Display a greeting message
-		console.log(api.helloWorld);
-
 		// Search for a term
 		api.search.query("catalunya").then(show, show);
 
 		// Get all linies
-		api.transit.linies().then(show, show);
+		//api.transit.linies().info().then(show, show);
 
 	</script>
 </head>
