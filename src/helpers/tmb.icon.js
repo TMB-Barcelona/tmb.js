@@ -2,7 +2,7 @@
 
 // A known pictogram
 function picto(name) {
-    return "//dl.dropboxusercontent.com/u/2368219/tmb_pictos/" + name + ".png";
+    return "https://dl.dropboxusercontent.com/u/2368219/tmb_pictos/" + name + ".png";
 }
 
 // An ugly placeholder
