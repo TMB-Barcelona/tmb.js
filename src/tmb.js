@@ -76,7 +76,7 @@ api.v3 = function(client_id, id_token) {
         client_id: client_id,
         id_token: id_token,
         target: "SYdr2TXjdSdAoz6EI3gdyig8LHxodc36",
-        scope: "openid",
+        scope: "openid email api version",
         api_type: "auth0"
     }).then(createApi);
 
