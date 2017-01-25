@@ -21,7 +21,7 @@ describe("tmb.js spec:", function() {
             client_id: test_user.client_id,
             username: test_user.username,
             password: test_user.password,
-            scope: "openid"
+            scope: "openid email api version"
         });
 
         getAppToken.then(getApi).then(search).then(parse).catch(showError);
@@ -33,7 +33,7 @@ describe("tmb.js spec:", function() {
         }
 
         function search(api_v3) {
-            return api_v3.search.query("catalunya");
+            return api_v3.search.query("catalunya").catch(showError);
         }
 
         function parse(response) {
