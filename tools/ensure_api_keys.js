@@ -1,7 +1,7 @@
-var fileExists = require('file-exists');
-var FILE = 'api_keys.json';
+var fs = require('fs');
+var FILE = './api_keys.json';
 
-if (!fileExists(FILE)) {
+if (!fs.existsSync(FILE)) {
     console.info("No '" + FILE + "' file found. Please provide your TMB API keys:");
 
     // Inspired in https://github.com/geomatico/password-simple-manager/blob/develop/bin/create.js

@@ -16,7 +16,7 @@ module.exports = function(config) {
       {pattern: 'api_keys.json', included: false},
       {pattern: 'auth0_user.json', included: false},
       'node_modules/karma-read-json/karma-read-json.js',
-      'node_modules/es6-promise/dist/es6-promise.js',
+      'node_modules/es6-promise/dist/es6-promise.auto.js',
       'spec/*Spec.js',
       {pattern: 'spec/fixtures/*.json', watched: true, served: true, included: false}
     ],
@@ -41,7 +41,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['mocha'],
 
     // web server port
     port: 9876,
