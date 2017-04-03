@@ -97,4 +97,19 @@ api.v3 = function(client_id, id_token) {
 
 };
 
+api.v4 = function(access_token) {
+    var http = axios.create({
+        baseURL: "https://api.tmb.cat/v4/",
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+        }
+    });
+
+    http.interceptors.response.use(function(response) {
+        return response.data;
+    });
+
+    return endpoints(http);
+};
+
 module.exports = api;

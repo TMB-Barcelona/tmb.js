@@ -15,6 +15,7 @@ module.exports = function(config) {
     files: [
       {pattern: 'api_keys.json', included: false},
       {pattern: 'auth0_user.json', included: false},
+      {pattern: 'test_client.json', included: false},
       'node_modules/karma-read-json/karma-read-json.js',
       'node_modules/es6-promise/dist/es6-promise.auto.js',
       'spec/*Spec.js',

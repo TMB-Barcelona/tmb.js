@@ -3,9 +3,9 @@ describe("tmb.js spec:", function() {
 
     beforeEach(function() {
         // Auth0 authorization process can be slow.
-        // Increase default timeout for jasmine async calls to 10 seconds.
+        // Increase default timeout for jasmine async calls to 20 seconds.
         originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
     });
 
     it("API v2 should use app_id and app_key credentials", function(done) {
@@ -45,6 +45,41 @@ describe("tmb.js spec:", function() {
 
         function parse(response) {
             expect(response.page.totalRecords).toBeGreaterThan(0);
+            done();
+        }
+
+        function showError(response) {
+            fail(JSON.stringify(response,null,2));
+        }
+
+    });
+
+    it("API v4 should use an auth0 token requested for API", function(done) {
+        var axios = require('axios');
+        var test_client = readJSON('test_client.json');
+
+        var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/token', {
+            grant_type: "client_credentials",
+            client_id: test_client.client_id,
+            client_secret: test_client.client_secret,
+            audience: test_client.audience,
+            scope: "api:v3 read:maps read:transit read:search"
+        });
+
+        getAppToken.then(getApi).then(search).then(parse).catch(showError);
+
+        function getApi(response) {
+            var access_token = response.data.access_token;
+            if(!access_token) fail(response.data);
+            return tmb.v4(access_token);
+        }
+
+        function search(api_v4) {
+            return api_v4.transit.linies.bus(22).parades().catch(showError);
+        }
+
+        function parse(response) {
+            expect(response.totalFeatures).toBeGreaterThan(0);
             done();
         }
 
