@@ -25,17 +25,21 @@ Then, include the built ``dist/tmb.js`` library, and instantiate with your API k
 	<script type="text/javascript" src="dist/tmb.js"></script>
 	<script type="text/javascript">
 
-		// Instantiate with user keys
-		var api = tmb('<your_app_id>', '<your_app_key>');
+		// Instantiate API v2 with user keys
+		var api_v2_a = tmb('<your_app_id>', '<your_app_key>');
 
 		// Alternatively, indicate a JSON file location (URL) containing: {"app_id":"<your_app_id>","app_key":"<your_app_key>"}
-		var api_2 = tmb("path/to/api_keys.json");
+		var api_v2_b = tmb("path/to/api_keys.json");
 
 		// Access API v3 providing a valid Auth0 token from an App.
 		// Note the promise based async constructor.
-		tmb.v3('<your_client_id>', '<your_id_token>').then(function(api) {
-		    // Use api here
+		tmb.v3('<your_client_id>', '<your_id_token>').then(function(api_v3) {
+		    // Use api_v3 here
 		});
+
+        // Access API v4 providing a valid Auth0 access token to access the api.
+        var api_v4 = tmb.v4('<your_access_token>');
+
 	</script>
 </head>
 <body>

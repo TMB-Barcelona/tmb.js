@@ -1,33 +1,30 @@
 var fs = require('fs');
-var FILE = './api_keys.json';
+var file_formats = {
+  'api_v2_keys.json': {
+    "app_id": "<your_app_id>",
+    "app_key": "<your_app_key>"
+  },
+  'api_v3_user.json': {
+    "client_id": "<auth0_test_client_id>",
+    "username": "<auth0_test_username>",
+    "password": "<auth0_password>"
+  },
+  'api_v4_client.json': {
+    "client_id": "<auth0_test_client_id>",
+    "client_secret": "<auth0_test_client_secret>"
+  }
+};
 
-if (!fs.existsSync(FILE)) {
-    console.info("No '" + FILE + "' file found. Please provide your TMB API keys:");
+var error = 0;
 
-    // Inspired in https://github.com/geomatico/password-simple-manager/blob/develop/bin/create.js
-    var prompt = require('prompt');
-    prompt.start();
-    prompt.message = "Please write your";
-    prompt.delimiter = " ";
-    prompt.get(['app_id', 'app_key'], function (err, config) {
-        if (config.app_id && config.app_key) {
-            var jsonfile = require('jsonfile');
-            jsonfile.writeFile(FILE, config, function(err) {
-                if (err) {
-                    console.error(err);
-                    process.exit(2);
-                } else {
-                    console.info("OK, file '" + FILE + "' created.");
-                }
-            });
-        } else {
-            console.error("========================================================");
-            console.error("Both keys are mandatory!!                               ");
-            console.error("Please get your API keys from https://developer.tmb.cat/");
-            console.error("========================================================");
-            process.exit(1);
-        }
-    });
-} else {
-    console.info("OK, file '" + FILE + "' exists.");
+for(var filename in file_formats) {
+  if (!fs.existsSync(filename)) {
+    console.error("\nNo '" + filename + "' file found. Please create it with the following format:");
+    console.error(JSON.stringify(file_formats[filename], null, 2));
+    error++;
+  } else {
+    console.info("OK, file '" + filename + "' exists.");
+  }
 }
+
+process.exit(error);

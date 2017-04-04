@@ -9,7 +9,7 @@ describe("tmb.js spec:", function() {
     });
 
     it("API v2 should use app_id and app_key credentials", function(done) {
-        var keys = readJSON('api_keys.json');
+        var keys = readJSON('api_v2_keys.json');
         var api_v1 = tmb(keys.app_id, keys.app_key);
 
         api_v1.search.query("catalunya").then(function(response) {
@@ -20,7 +20,7 @@ describe("tmb.js spec:", function() {
 
     it("API v3 should use an auth0 token requested by delegation", function(done) {
         var axios = require('axios');
-        var test_user = readJSON('auth0_user.json');
+        var test_user = readJSON('api_v3_user.json');
 
         var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/ro', {
             connection: "Username-Password-Authentication",
@@ -54,15 +54,15 @@ describe("tmb.js spec:", function() {
 
     });
 
-    it("API v4 should use an auth0 token requested for API", function(done) {
+    it("API v4 should use a valid auth0 access_token to access api", function(done) {
         var axios = require('axios');
-        var test_client = readJSON('test_client.json');
+        var client = readJSON('api_v4_client.json');
 
         var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/token', {
             grant_type: "client_credentials",
-            client_id: test_client.client_id,
-            client_secret: test_client.client_secret,
-            audience: test_client.audience,
+            client_id: client.client_id,
+            client_secret: client.client_secret,
+            audience: "https://api.tmb.cat",
             scope: "api:v3 read:maps read:transit read:search"
         });
 

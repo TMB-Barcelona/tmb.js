@@ -1,7 +1,7 @@
 .idea/
 node_modules/
-api_keys.json
-auth0_user.json
-test_client.json
+api_v2_keys.json
+api_v3_user.json
+api_v4_client.json
 secrets.tar
 dist/

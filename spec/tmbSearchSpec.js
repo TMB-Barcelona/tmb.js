@@ -4,7 +4,7 @@
 describe("tmb.search.js spec:", function() {
 
     var tmb = require('../src/tmb');
-    var keys = readJSON('api_keys.json');
+    var keys = readJSON('api_v2_keys.json');
 
     describe("API search call", function() {
         var api;
