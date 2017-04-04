@@ -13,6 +13,23 @@ TMB API Javascript library
 * Run examples: ``npm start`` and open https://localhost:8080/webpack-dev-server/examples/
 
 
+#### Generating new secrets for travis
+
+Tar the `api_v*.json` files and [encrypt the result for travis](https://docs.travis-ci.com/user/encrypting-files/)
+(you will need to install the travis CLI client):
+
+    tar -cvf secrets.tar api_*.json
+    travis encrypt-file secrets.tar
+    rm secrets.tar
+
+Then edit `.travis.yml` and edit the openssl command to use the generated `-K` and `-iv`
+environment variables. For instance:
+
+    openssl aes-256-cbc -K $encrypted_0e142905b713_key -iv $encrypted_0e142905b713_iv
+
+**Make sure to _not_ add the unencrypted key files (json or tar) to the git repo**. 
+
+
 ## Usage
 
 [If needed](https://developer.mozilla.org/ca/docs/Web/JavaScript/Reference/Global_Objects/Promise#Browser_compatibility), polyfill ``es6-promise``.
