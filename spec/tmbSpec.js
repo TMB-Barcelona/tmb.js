@@ -3,9 +3,9 @@ describe("tmb.js spec:", function() {
 
     beforeEach(function() {
         // Auth0 authorization process can be slow.
-        // Increase default timeout for jasmine async calls to 20 seconds.
+        // Increase default timeout for jasmine async calls to 60 seconds.
         originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
     });
 
     it("API v2 should use app_id and app_key credentials", function(done) {
