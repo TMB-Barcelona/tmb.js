@@ -71,7 +71,7 @@ var api = function(app_id_or_url, app_key) {
 
 api.v3 = function(access_token) {
     var http = axios.create({
-        baseURL: "https://api.tmb.cat/v4/",
+        baseURL: "https://api.tmb.cat/v3/",
         headers: {
             'Authorization': 'Bearer ' + access_token
         }
