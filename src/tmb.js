@@ -67,37 +67,9 @@ var api = function(app_id_or_url, app_key) {
     });
 
     return endpoints(http);
-
 };
 
-api.v3 = function(client_id, id_token) {
-    return axios.post('https://tmb.eu.auth0.com/delegation', {
-        grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        client_id: client_id,
-        id_token: id_token,
-        target: "SYdr2TXjdSdAoz6EI3gdyig8LHxodc36",
-        scope: "openid email api version",
-        api_type: "auth0"
-    }).then(createApi);
-
-    function createApi(response) {
-        var http = axios.create({
-            baseURL: "https://labs.tmb.cat/v3/",
-            headers: {
-                'Authorization': 'Bearer ' + response.data.id_token
-            }
-        });
-
-        http.interceptors.response.use(function(response) {
-            return response.data;
-        });
-
-        return endpoints(http);
-    }
-
-};
-
-api.v4 = function(access_token) {
+api.v3 = function(access_token) {
     var http = axios.create({
         baseURL: "https://api.tmb.cat/v4/",
         headers: {

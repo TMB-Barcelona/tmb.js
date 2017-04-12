@@ -18,45 +18,9 @@ describe("tmb.js spec:", function() {
         }, fail);
     });
 
-    it("API v3 should use an auth0 token requested by delegation", function(done) {
+    it("API v3 should use a valid auth0 access_token to access api", function(done) {
         var axios = require('axios');
-        var test_user = readJSON('api_v3_user.json');
-
-        var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/ro', {
-            connection: "Username-Password-Authentication",
-            grant_type: "password",
-            client_id: test_user.client_id,
-            username: test_user.username,
-            password: test_user.password,
-            scope: "openid email api version"
-        });
-
-        getAppToken.then(getApi).then(search).then(parse).catch(showError);
-
-        function getApi(response) {
-            var id_token = response.data.id_token;
-            if(!id_token) fail(response.data);
-            return tmb.v3(test_user.client_id, id_token);
-        }
-
-        function search(api_v3) {
-            return api_v3.search.query("catalunya").catch(showError);
-        }
-
-        function parse(response) {
-            expect(response.page.totalRecords).toBeGreaterThan(0);
-            done();
-        }
-
-        function showError(response) {
-            fail(JSON.stringify(response,null,2));
-        }
-
-    });
-
-    it("API v4 should use a valid auth0 access_token to access api", function(done) {
-        var axios = require('axios');
-        var client = readJSON('api_v4_client.json');
+        var client = readJSON('api_v3_client.json');
 
         var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/token', {
             grant_type: "client_credentials",
@@ -71,11 +35,11 @@ describe("tmb.js spec:", function() {
         function getApi(response) {
             var access_token = response.data.access_token;
             if(!access_token) fail(response.data);
-            return tmb.v4(access_token);
+            return tmb.v3(access_token);
         }
 
-        function search(api_v4) {
-            return api_v4.transit.linies.bus(22).parades().catch(showError);
+        function search(api_v3) {
+            return api_v3.transit.linies.bus(22).parades().catch(showError);
         }
 
         function parse(response) {

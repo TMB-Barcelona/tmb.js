@@ -4,12 +4,7 @@ var file_formats = {
     "app_id": "<your_app_id>",
     "app_key": "<your_app_key>"
   },
-  'api_v3_user.json': {
-    "client_id": "<auth0_test_client_id>",
-    "username": "<auth0_test_username>",
-    "password": "<auth0_password>"
-  },
-  'api_v4_client.json': {
+  'api_v3_client.json': {
     "client_id": "<auth0_test_client_id>",
     "client_secret": "<auth0_test_client_secret>"
   }
