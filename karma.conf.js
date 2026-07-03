@@ -1,6 +1,16 @@
 module.exports = function(config) {
   var webpackConfig = require('./webpack.config.js');
-  webpackConfig.entry = {};
+  webpackConfig = Object.assign({}, webpackConfig, {
+    devServer: undefined,
+    mode: 'development',
+    optimization: {
+      runtimeChunk: false,
+      splitChunks: false
+    },
+    output: Object.assign({}, webpackConfig.output, {
+      globalObject: 'window'
+    })
+  });
 
   var configuration = {
 
@@ -17,6 +27,7 @@ module.exports = function(config) {
       {pattern: 'api_v3_client.json', included: false},
       'node_modules/karma-read-json/karma-read-json.js',
       'node_modules/es6-promise/dist/es6-promise.auto.js',
+      'spec/phantomjsPolyfills.js',
       'spec/*Spec.js',
       {pattern: 'spec/fixtures/*.json', watched: true, served: true, included: false}
     ],
@@ -35,7 +46,7 @@ module.exports = function(config) {
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      noInfo: true
+      stats: 'errors-only'
     },
 
     // test results reporter to use
@@ -60,7 +71,7 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
 
-    browserNoActivityTimeout: 60000,
+    browserNoActivityTimeout: 180000,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
