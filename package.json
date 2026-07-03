@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run keys && webpack",
     "keys": "node tools/ensure_api_keys.js",
-    "test": "npm run keys && karma start karma.conf.js",
+    "test": "npm run keys && jasmine",
     "start": "npm run keys && webpack serve"
   },
   "repository": {
@@ -27,15 +27,8 @@
   "homepage": "https://github.com/TMB-Barcelona/tmb.js#readme",
   "devDependencies": {
     "http-server": "0.9.0",
-    "jasmine-core": "2.5.2",
+    "jasmine": "6.3.0",
     "jsonfile": "2.4.0",
-    "karma": "1.4.1",
-    "karma-jasmine": "1.1.0",
-    "karma-mocha-reporter": "2.2.2",
-    "karma-phantomjs-launcher": "1.0.2",
-    "karma-read-json": "1.1.0",
-    "karma-webpack": "5.0.0",
-    "phantomjs-prebuilt": "2.1.14",
     "prompt": "1.0.0",
     "webpack": "^5.108.3",
     "webpack-cli": "5.1.4",

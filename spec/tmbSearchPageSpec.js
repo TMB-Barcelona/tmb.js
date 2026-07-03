@@ -135,7 +135,9 @@ describe("tmb.search.page.js spec:", function() {
             );
 
             // Test finishes when all promises are tested
-            Promise.all(promises).then(done, fail);
+            Promise.all(promises).then(function() {
+                done();
+            }, done.fail);
 
         });
 

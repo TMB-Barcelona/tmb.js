@@ -22,6 +22,10 @@ describe("tmb.js spec:", function() {
         var axios = require('axios');
         var client = readJSON('api_v3_client.json');
 
+        if (client.client_id === '<auth0_test_client_id>' || client.client_secret === '<auth0_test_client_secret>') {
+            pending('API v3 credentials are placeholders');
+        }
+
         var getAppToken = axios.post('https://tmb.eu.auth0.com/oauth/token', {
             grant_type: "client_credentials",
             client_id: client.client_id,
@@ -48,7 +52,7 @@ describe("tmb.js spec:", function() {
         }
 
         function showError(response) {
-            fail(JSON.stringify(response,null,2));
+            done.fail(JSON.stringify(response,null,2));
         }
 
     });
